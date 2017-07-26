@@ -2,7 +2,7 @@ Django Coleman
 ==============
 
 Django Coleman: A very simple Task Management web app written
-with Django Admin.
+with **Django Admin**.
 
 
 Requirements

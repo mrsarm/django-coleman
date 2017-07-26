@@ -8,10 +8,13 @@ class Task(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, editable=False)
 
     def __str__(self):
-        return "[%s] %s" % (self.id, self.description)
+        return f"[{self.id}] {self.description}"
 
 
 class Item(models.Model):
+    class Meta:
+        verbose_name_plural = "Check List"
+
     task = models.ForeignKey(Task, on_delete=models.CASCADE)
     item_description = models.CharField(max_length=200)
     is_done = models.BooleanField(default=False)
