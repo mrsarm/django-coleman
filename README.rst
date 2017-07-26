@@ -1,7 +1,7 @@
 Django Coleman
 ==============
 
-Django Coleman: A very simple Task Managment web app written
+Django Coleman: A very simple Task Management web app written
 with Django Admin.
 
 
@@ -39,6 +39,6 @@ About
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017) Mariano Ruiz <mrsarm@gmail.cm>
+**Authors**: (2017) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3
