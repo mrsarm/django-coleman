@@ -13,7 +13,7 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = ('title', 'created_at')
     search_fields = ('id', 'title')
     list_filter = ('created_at',)
-    ordering = ('created_at',)
+    ordering = ('-created_at',)
     fieldsets = (               # Edition form
         (None,               {'fields': ('title', ('description', 'resolution'))}),
         ('Date information', {'fields': ('created_at',), 'classes': ('collapse',)}),

@@ -23,6 +23,7 @@ Install dependencies with::
 Create the database with::
 
     $ ./manage.py makemigrations
+    $ ./manage.py makemigrations mtasks
     $ ./manage.py migrate
 
 To create an admin user::
