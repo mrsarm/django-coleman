@@ -11,16 +11,16 @@ class ItemInline(admin.TabularInline):
 
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'user', 'created_at')
+    list_display = ('id', 'title', 'user', 'created_at', 'deadline', 'state', 'priority')
     list_display_links = ('id', 'title')
     search_fields = ('id', 'title', 'item__item_description',
                      'user__username', 'user__first_name', 'user__last_name')
-    list_filter = ('created_at',)
+    list_filter = ('state', 'priority', 'deadline')
     ordering = ('-created_at',)
     readonly_fields = ('created_at', 'last_modified', 'created_by')
 
     fieldsets = (               # Edition form
-        (None,                   {'fields': ('title', 'user', ('description', 'resolution'))}),
+        (None,                   {'fields': ('title', ('user', 'deadline'), ('state', 'priority'), ('description', 'resolution'))}),
         (_('More...'), {'fields': (('created_at', 'last_modified'), 'created_by'), 'classes': ('collapse',)}),
     )
     inlines = [ItemInline]
@@ -35,7 +35,7 @@ class TaskAdmin(admin.ModelAdmin):
         fieldsets = super(TaskAdmin, self).get_fieldsets(request, obj)
         if obj is None:
             fieldsets = (      # Creation form
-                (None, {'fields': ('title', 'user', 'description')}),
+                (None, {'fields': ('title', ('user', 'deadline'), ('state', 'priority'), 'description')}),
             )
         return fieldsets
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-29 16:00-0300\n"
+"POT-Creation-Date: 2017-07-29 17:20-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mariano Ruiz <mrsarm@gmail.com>\n"
 "Language: es\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: mtasks/admin.py:23
+#: mtasks/admin.py:24
 msgid "More..."
 msgstr "Mas informacion..."
 
@@ -32,42 +32,90 @@ msgstr "Tarea"
 msgid "Tasks"
 msgstr "Tareas"
 
-#: mtasks/models.py:11
+#: mtasks/models.py:12
+msgid "To Do"
+msgstr "Para Hacer"
+
+#: mtasks/models.py:13
+msgid "In Progress"
+msgstr "En Progreso"
+
+#: mtasks/models.py:14
+msgid "Blocked"
+msgstr "Bloqueado"
+
+#: mtasks/models.py:15
+msgid "Done"
+msgstr "Hecho"
+
+#: mtasks/models.py:16
+msgid "Dismissed"
+msgstr "Desestimado"
+
+#: mtasks/models.py:20
+msgid "Low"
+msgstr "Baja"
+
+#: mtasks/models.py:21
+msgid "Normal"
+msgstr "Normal"
+
+#: mtasks/models.py:22
+msgid "Critical"
+msgstr "Crítica"
+
+#: mtasks/models.py:23
+msgid "Blocker"
+msgstr "Bloqueada"
+
+#: mtasks/models.py:26
 msgid "title"
 msgstr "título"
 
-#: mtasks/models.py:12 mtasks/models.py:31
+#: mtasks/models.py:27 mtasks/models.py:49
 msgid "description"
 msgstr "descripción"
 
-#: mtasks/models.py:13
+#: mtasks/models.py:28
 msgid "resolution"
 msgstr "resolución"
 
-#: mtasks/models.py:14
-msgid "created by"
-msgstr "creado por"
+#: mtasks/models.py:29
+msgid "deadline"
+msgstr "fecha límite"
 
-#: mtasks/models.py:16
+#: mtasks/models.py:30
 msgid "assigned to"
 msgstr "asignado a"
 
-#: mtasks/models.py:18
+#: mtasks/models.py:32
+msgid "state"
+msgstr "estado"
+
+#: mtasks/models.py:33
+msgid "priority"
+msgstr "prioridad"
+
+#: mtasks/models.py:34
+msgid "created by"
+msgstr "creado por"
+
+#: mtasks/models.py:36
 msgid "created at"
 msgstr "creado en"
 
-#: mtasks/models.py:19
+#: mtasks/models.py:37
 msgid "last modified"
-msgstr "Última vez modificado"
+msgstr "última vez modificado"
 
-#: mtasks/models.py:27
+#: mtasks/models.py:45
 msgid "Item"
-msgstr ""
+msgstr "Item"
 
-#: mtasks/models.py:28
+#: mtasks/models.py:46
 msgid "Check List"
-msgstr ""
+msgstr "Check List"
 
-#: mtasks/models.py:32
+#: mtasks/models.py:50
 msgid "done?"
-msgstr "¿Listo?"
+msgstr "¿listo?"

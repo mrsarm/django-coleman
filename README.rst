@@ -49,8 +49,8 @@ For example to overwrite the language of the application::
 
 Available settings to override are:
 
- * ``TIME_ZONE``: default ``UTC``. Other example: ``America/Buenos_Aires``
- * ``LANGUAGE_CODE``: default ``en-us``. Other example: ``es-ar``.
+* ``TIME_ZONE``: default ``UTC``. Other example: ``America/Buenos_Aires``
+* ``LANGUAGE_CODE``: default ``en-us``. Other example: ``es-ar``.
 
 
 Access the application
@@ -62,7 +62,7 @@ Like any Django app developed with Django Admin, enter with: http://localhost:80
 Development
 -----------
 
-Some tips to if you are improving this application.
+Some tips if you are improving this application.
 
 Translations
 ^^^^^^^^^^^^
