@@ -19,3 +19,6 @@ staticfiles/
 .project
 .pydevproject
 .directory
+
+# Script for PROD env
+prod.sh

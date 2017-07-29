@@ -22,17 +22,35 @@ Install dependencies with::
 
 Create the database with::
 
-    $ ./manage.py makemigrations
-    $ ./manage.py makemigrations mtasks
-    $ ./manage.py migrate
+    $ python3 manage.py makemigrations
+    $ python3 manage.py makemigrations mtasks
+    $ python3 manage.py migrate
 
 To create an admin user::
 
-    $ ./manage.py createsuperuser
+    $ python3 manage.py createsuperuser
 
 Then run with::
 
-    $ ./manage.py runserver
+    $ python3 manage.py runserver
+
+Or use the script to startup::
+
+    $ ./run.sh dev
+
+To run for production environment::
+
+    $ ./run.sh prod
+
+Some settings can be overwritten with enviroment variables with the same name.
+For example to overwrite the language of the application::
+
+    $ LANGUAGE_CODE=es-ar ./run.sh prod
+
+Available settings to override are:
+
+ * ``TIME_ZONE``: default ``UTC``. Other example: ``America/Buenos_Aires``
+ * ``LANGUAGE_CODE``: default ``en-us``
 
 
 About
