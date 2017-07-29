@@ -37,7 +37,7 @@ class Task(models.Model):
     last_modified = models.DateTimeField(_("last modified"), auto_now=True, editable=False)
 
     def __str__(self):
-        return f"[{self.id}] {self.title}"
+        return "[%s] %s" % (self.id, self.title)
 
 
 class Item(models.Model):
