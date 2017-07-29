@@ -11,15 +11,16 @@ class ItemInline(admin.TabularInline):
 
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'created_at')
+    list_display = ('id', 'title', 'user', 'created_at')
     list_display_links = ('id', 'title')
-    search_fields = ('id', 'title', 'item__item_description')
+    search_fields = ('id', 'title', 'item__item_description',
+                     'user__username', 'user__first_name', 'user__last_name')
     list_filter = ('created_at',)
     ordering = ('-created_at',)
     readonly_fields = ('created_at', 'last_modified', 'created_by')
 
     fieldsets = (               # Edition form
-        (None,                   {'fields': ('title', ('description', 'resolution'))}),
+        (None,                   {'fields': ('title', 'user', ('description', 'resolution'))}),
         (_('More...'), {'fields': (('created_at', 'last_modified'), 'created_by'), 'classes': ('collapse',)}),
     )
     inlines = [ItemInline]
@@ -34,12 +35,13 @@ class TaskAdmin(admin.ModelAdmin):
         fieldsets = super(TaskAdmin, self).get_fieldsets(request, obj)
         if obj is None:
             fieldsets = (      # Creation form
-                (None, {'fields': ('title', 'description')}),
+                (None, {'fields': ('title', 'user', 'description')}),
             )
         return fieldsets
 
     def save_model(self, request, obj, form, change):
-        obj.created_by = request.user
+        if change is False:
+            obj.created_by = request.user
         super(TaskAdmin, self).save_model(request, obj, form, change)
 
 

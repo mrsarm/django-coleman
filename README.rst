@@ -53,6 +53,12 @@ Available settings to override are:
  * ``LANGUAGE_CODE``: default ``en-us``. Other example: ``es-ar``.
 
 
+Access the application
+----------------------
+
+Like any Django app developed with Django Admin, enter with: http://localhost:8000/admin
+
+
 Development
 -----------
 

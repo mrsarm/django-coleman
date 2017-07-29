@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-29 00:29-0300\n"
+"POT-Creation-Date: 2017-07-29 16:00-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mariano Ruiz <mrsarm@gmail.com>\n"
 "Language: es\n"
@@ -36,7 +36,7 @@ msgstr "Tareas"
 msgid "title"
 msgstr "título"
 
-#: mtasks/models.py:12 mtasks/models.py:28
+#: mtasks/models.py:12 mtasks/models.py:31
 msgid "description"
 msgstr "descripción"
 
@@ -48,22 +48,26 @@ msgstr "resolución"
 msgid "created by"
 msgstr "creado por"
 
-#: mtasks/models.py:15
+#: mtasks/models.py:16
+msgid "assigned to"
+msgstr "asignado a"
+
+#: mtasks/models.py:18
 msgid "created at"
 msgstr "creado en"
 
-#: mtasks/models.py:16
+#: mtasks/models.py:19
 msgid "last modified"
 msgstr "Última vez modificado"
 
-#: mtasks/models.py:24
+#: mtasks/models.py:27
 msgid "Item"
 msgstr ""
 
-#: mtasks/models.py:25
+#: mtasks/models.py:28
 msgid "Check List"
 msgstr ""
 
-#: mtasks/models.py:29
+#: mtasks/models.py:32
 msgid "done?"
 msgstr "¿Listo?"

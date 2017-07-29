@@ -11,7 +11,9 @@ class Task(models.Model):
     title = models.CharField(_("title"), max_length=200)
     description = models.TextField(_("description"), max_length=2000, null=True, blank=True)
     resolution = models.TextField(_("resolution"), max_length=2000, null=True, blank=True)
-    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, verbose_name=_('created by'),
+    created_by = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='tasks_created', verbose_name=_('created by'),
+                                   on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, related_name='tasks_assigned', verbose_name=_('assigned to'),
                                    on_delete=models.SET_NULL, null=True)
     created_at = models.DateTimeField(_("created at"), auto_now_add=True, editable=False)
     last_modified = models.DateTimeField(_("last modified"), auto_now=True, editable=False)
