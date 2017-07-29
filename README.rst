@@ -42,15 +42,18 @@ To run for production environment::
 
     $ ./run.sh prod
 
-Some settings can be overwritten with enviroment variables with the same name.
-For example to overwrite the language of the application::
+Some settings can be overwritten with environment variables.
+For example to overwrite the language of the application and
+set *debug* options to false::
 
-    $ LANGUAGE_CODE=es-ar ./run.sh prod
+    $ DEBUG=False LANGUAGE_CODE=es-ar python3 manage.py runserver
 
 Available settings to override are:
 
+* ``DEBUG``: set the Django ``DEBUG`` option. Default ``True``
 * ``TIME_ZONE``: default ``UTC``. Other example: ``America/Buenos_Aires``
-* ``LANGUAGE_CODE``: default ``en-us``. Other example: ``es-ar``.
+* ``LANGUAGE_CODE``: default ``en-us``. Other example: ``es-ar``
+* ``SITE_HEADER``: Title for header of the app. Default to *Django Coleman - A Simple Task Manager*
 
 
 Access the application

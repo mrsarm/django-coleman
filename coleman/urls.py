@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.conf import settings
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
 ]
 
-admin.site.site_header = 'Django Coleman - A Simple Task Manager'
+admin.site.site_header = settings.SITE_HEADER
