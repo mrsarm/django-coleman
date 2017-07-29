@@ -5,11 +5,25 @@ Django Coleman: A very simple Task Management web app written
 with **Django Admin**.
 
 
+Features
+--------
+
+* Simple task manager that allows to define a tasks with title,
+  description, responsible of the task, priority...
+* Each task may have items: sub-tasks to be done.
+* The built-in Django *Authentication and Authorization* system
+  to manage users and groups, login, etc.
+* Spanish translations.
+
+
 Requirements
 ------------
 
-* Python 3.x (tested with Python 3.6)
-* Django 1.11
+* Python 3.4+ (tested with Python 3.4 and 3.6)
+* Django 1.11 and other dependencies declared
+  in the ``requirements.txt`` file (use virtual environments!).
+* A Django compatible database like PostgreSQL (by default use
+  the Python's built-in SQLite database for development purpose).
 
 
 Install and Run
@@ -40,7 +54,7 @@ Or use the script to startup::
 
 To run for production environment::
 
-    $ ./run.sh prod
+    $ ./run.sh prod     # To-Do: Not yet using a real production server
 
 Some settings can be overwritten with environment variables.
 For example to overwrite the language of the application and
