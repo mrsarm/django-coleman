@@ -15,6 +15,9 @@ Features
   to manage users and groups, login, etc.
 * Spanish translations.
 
+.. image:: docs/source/_static/img/django-coleman.png
+   :alt: Django Coleman
+
 
 Requirements
 ------------
