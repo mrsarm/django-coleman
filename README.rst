@@ -50,7 +50,26 @@ For example to overwrite the language of the application::
 Available settings to override are:
 
  * ``TIME_ZONE``: default ``UTC``. Other example: ``America/Buenos_Aires``
- * ``LANGUAGE_CODE``: default ``en-us``
+ * ``LANGUAGE_CODE``: default ``en-us``. Other example: ``es-ar``.
+
+
+Development
+-----------
+
+Some tips to if you are improving this application.
+
+Translations
+^^^^^^^^^^^^
+
+After add to the code new texts to be translated, execute
+from the root folder::
+
+    $ django-admin makemessages -l LANG
+
+The go to the *.po* file and add the translation. Finally
+execute to compile::
+
+    $ django-admin compilemessages
 
 
 About

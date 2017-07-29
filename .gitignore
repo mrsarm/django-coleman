@@ -7,6 +7,9 @@
 # Staticfiles
 staticfiles/
 
+# Compiled messages
+*.mo
+
 # Log files
 *.log
 
