@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-29 17:20-0300\n"
+"POT-Creation-Date: 2017-07-31 08:41-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mariano Ruiz <mrsarm@gmail.com>\n"
 "Language: es\n"
@@ -61,61 +61,65 @@ msgid "Normal"
 msgstr "Normal"
 
 #: mtasks/models.py:22
+msgid "High"
+msgstr "Alta"
+
+#: mtasks/models.py:23
 msgid "Critical"
 msgstr "Crítica"
 
-#: mtasks/models.py:23
+#: mtasks/models.py:24
 msgid "Blocker"
 msgstr "Bloqueada"
 
-#: mtasks/models.py:26
+#: mtasks/models.py:27
 msgid "title"
 msgstr "título"
 
-#: mtasks/models.py:27 mtasks/models.py:49
+#: mtasks/models.py:28 mtasks/models.py:50
 msgid "description"
 msgstr "descripción"
 
-#: mtasks/models.py:28
+#: mtasks/models.py:29
 msgid "resolution"
 msgstr "resolución"
 
-#: mtasks/models.py:29
+#: mtasks/models.py:30
 msgid "deadline"
 msgstr "fecha límite"
 
-#: mtasks/models.py:30
+#: mtasks/models.py:31
 msgid "assigned to"
 msgstr "asignado a"
 
-#: mtasks/models.py:32
+#: mtasks/models.py:33
 msgid "state"
 msgstr "estado"
 
-#: mtasks/models.py:33
+#: mtasks/models.py:34
 msgid "priority"
 msgstr "prioridad"
 
-#: mtasks/models.py:34
+#: mtasks/models.py:35
 msgid "created by"
 msgstr "creado por"
 
-#: mtasks/models.py:36
+#: mtasks/models.py:37
 msgid "created at"
 msgstr "creado en"
 
-#: mtasks/models.py:37
+#: mtasks/models.py:38
 msgid "last modified"
 msgstr "última vez modificado"
 
-#: mtasks/models.py:45
+#: mtasks/models.py:46
 msgid "Item"
 msgstr "Item"
 
-#: mtasks/models.py:46
+#: mtasks/models.py:47
 msgid "Check List"
 msgstr "Check List"
 
-#: mtasks/models.py:50
+#: mtasks/models.py:51
 msgid "done?"
 msgstr "¿listo?"

@@ -19,8 +19,9 @@ class Task(models.Model):
     PRIORITIES = (
         ('00_low', _('Low')),
         ('10_normal', _('Normal')),
-        ('20_critical', _('Critical')),
-        ('30_blocker', _('Blocker'))
+        ('20_high', _('High')),
+        ('30_critical', _('Critical')),
+        ('40_blocker', _('Blocker'))
     )
 
     title = models.CharField(_("title"), max_length=200)

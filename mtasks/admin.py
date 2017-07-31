@@ -11,7 +11,7 @@ class ItemInline(admin.TabularInline):
 
 
 class TaskAdmin(admin.ModelAdmin):
-    list_display = ('id', 'title', 'user', 'created_at', 'deadline', 'state', 'priority')
+    list_display = ('id', 'title', 'user', 'created_at', 'deadline', 'priority', 'state')
     list_display_links = ('id', 'title')
     search_fields = ('id', 'title', 'item__item_description',
                      'user__username', 'user__first_name', 'user__last_name')
