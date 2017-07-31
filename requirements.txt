@@ -1,2 +1,6 @@
 Django==1.11.3
 django-flat-responsive==1.3.0
+dj-database-url==0.4.2
+
+# Uncomment this is you are going to use PosgreSQL
+#psycopg2==2.7.3

@@ -71,6 +71,8 @@ Available settings to override are:
 * ``TIME_ZONE``: default ``UTC``. Other example: ``America/Buenos_Aires``.
 * ``LANGUAGE_CODE``: default ``en-us``. Other example: ``es-ar``.
 * ``SITE_HEADER``: Header title of the app. Default to *"Django Coleman - A Simple Task Manager"*.
+* ``DATABASE_URL``: Database string connection. Default uses SQLite database. Other
+  example: ``postgresql://dcoleman:postgres@localhost/dcoleman_dev``.
 
 
 Access the application
