@@ -23,9 +23,9 @@ Requirements
 ------------
 
 * Python 3.4+ (tested with Python 3.4 and 3.6).
-* Django 1.11 and other dependencies declared.
+* Django 1.11 and other dependencies declared
   in the ``requirements.txt`` file (use virtual environments!).
-* A Django compatible database like PostgreSQL (by default use
+* A Django compatible database like PostgreSQL (by default uses
   the Python's built-in SQLite database for development purpose).
 
 
@@ -47,20 +47,16 @@ To create an admin user::
 
     $ python3 manage.py createsuperuser
 
-Then run with::
+Then run in development mode with::
 
     $ python3 manage.py runserver
 
-Or use the script to startup::
+Or use the script to startup in the same mode::
 
     $ ./run.sh dev
 
-To run for production environment::
-
-    $ ./run.sh prod     # To-Do: Not yet using a real production server
-
 Some settings can be overwritten with environment variables.
-For example to overwrite the language of the application and
+For example to overwrite the language translations of the application and
 set *debug* options to false::
 
     $ DEBUG=False LANGUAGE_CODE=es-ar python3 manage.py runserver
@@ -73,6 +69,9 @@ Available settings to override are:
 * ``SITE_HEADER``: Header title of the app. Default to *"Django Coleman - A Simple Task Manager"*.
 * ``DATABASE_URL``: Database string connection. Default uses SQLite database. Other
   example: ``postgresql://dcoleman:postgres@localhost/dcoleman_dev``.
+
+To run in a production environment, check the `<README-production.rst>`_ notes, or
+see the official Django documentation.
 
 
 Access the application
@@ -89,13 +88,14 @@ Some tips if you are improving this application.
 Translations
 ^^^^^^^^^^^^
 
-After add to the code new texts to be translated, execute
-from the root folder::
+After add to the source code new texts to be translated, execute
+from the root folder (replace ``LANG`` by a valid language
+code like ``es``)::
 
     $ django-admin makemessages -l LANG
 
-Then go to the *.po* file and add the translation. Finally
-execute to compile::
+Then go to the *.po* file and add the translations. Finally
+execute to compile the locales::
 
     $ django-admin compilemessages
 

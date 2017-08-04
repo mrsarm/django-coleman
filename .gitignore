@@ -23,5 +23,9 @@ staticfiles/
 .pydevproject
 .directory
 
-# Script for PROD env
+# Script for different environments
 prod.sh
+dev.sh
+
+# Static files collected
+/static

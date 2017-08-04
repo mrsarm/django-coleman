@@ -21,7 +21,20 @@ case "$1" in
         ;;
     prod)
         export DEBUG=False
-        python3 manage.py runserver 0:8000 --insecure
+        if [ -z "$DATABASE_URL" ]
+        then
+            # Remove or replace this with the real database connection
+            export DATABASE_URL="postgresql://dcoleman:postgres@localhost/dcoleman_dev"
+        fi
+        echo -n "Starting uWSGI server for Django Coleman... "
+        uwsgi --module=coleman.wsgi:application \
+              --master --pidfile=/tmp/dcoleman-master.pid \
+              --http=127.0.0.1:8000 \
+              --processes=5 \
+              --max-requests=5000 \
+              --vacuum \
+              --daemonize=dcoleman.log
+        echo "started with PID $(cat /tmp/dcoleman-master.pid)"
         ;;
     *)
         echo
