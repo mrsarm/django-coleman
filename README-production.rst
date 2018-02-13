@@ -22,6 +22,10 @@ in the folder ``static/``, execute once::
 
     $ python3 manage.py collectstatic
 
+
+Nginx configuration
+-------------------
+
 This is an example of how should looks like a *Nginx* configuration
 file for Django Coleman::
 
@@ -56,3 +60,22 @@ at http://coleman.localhost/admin
 If you can't see the Admin page correctly, and the browser console shows
 you *403 Forbidden* errors, ensure the user that runs the Nginx server
 has permissions to access to the Django Coleman resources.
+
+
+PostgreSQL database
+-------------------
+
+If you want to use a PostgreSQL database (recomended), before run
+the `migration scripts <https://github.com/mrsarm/django-coleman/#install-and-run>`_
+be sure to create the user and the database used by Django Coleman, in the
+``run.sh`` script is used this string connection
+as example: ``postgresql://dcoleman:postgres@localhost/dcoleman_dev``,
+so to create a database ``dcoleman_dev`` with a user ``dcoleman`` and a
+password ``postgres``, first create the user with::
+
+    $ sudo -u postgres createuser --createdb --no-superuser --no-createrole --pwprompt dcoleman
+
+And then create the database with::
+
+    $ sudo -u postgres psql
+    postgres=# CREATE DATABASE dcoleman_dev OWNER dcoleman;

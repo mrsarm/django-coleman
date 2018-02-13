@@ -23,7 +23,8 @@ case "$1" in
         export DEBUG=False
         if [ -z "$DATABASE_URL" ]
         then
-            # Remove or replace this with the real database connection
+            # Default database, set the real string connection from the environment
+            # variable instead of hardcoding here
             export DATABASE_URL="postgresql://dcoleman:postgres@localhost/dcoleman_dev"
         fi
         echo -n "Starting uWSGI server for Django Coleman... "
