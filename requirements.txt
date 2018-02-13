@@ -1,4 +1,3 @@
 wheel
-Django==1.11.10
-django-flat-responsive==2.0
+Django==2.0.2
 dj-database-url==0.4.2

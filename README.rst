@@ -23,7 +23,7 @@ Requirements
 ------------
 
 * Python 3.4+ (tested with Python 3.4 and 3.6).
-* Django 1.11 and other dependencies declared
+* Django 2.0 and other dependencies declared
   in the ``requirements.txt`` file (use virtual environments!).
 * A Django compatible database like PostgreSQL (by default uses
   the Python's built-in SQLite database for development purpose).
@@ -100,11 +100,19 @@ execute to compile the locales::
     $ django-admin compilemessages
 
 
+Oldest Django versions
+----------------------
+
+The Branch ``django/1.11`` has the django-coleman source code
+that works with Django 1.11, and maybe tweaking some configurations
+can works with oldest versions too.
+
+
 About
 -----
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017) Mariano Ruiz <mrsarm@gmail.com>
+**Authors**: (2017-2018) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3
