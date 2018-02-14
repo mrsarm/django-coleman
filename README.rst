@@ -4,14 +4,16 @@ Django Coleman
 Django Coleman: A very simple Task Management web app written
 with **Django Admin**.
 
-.. note::
 
-   **The Branch django/1.11** has the django-coleman source code
-   that works with Django 1.11, and maybe tweaking some configurations
-   can works with oldest versions too.
+Note
+----
 
-   Checkout the `master <https://github.com/mrsarm/django-coleman/tree/master/>`_
-   branch to get the latest version of Django Coleman with Django 2+.
+The Branch **django/1.11** has the django-coleman source code
+that works with Django 1.11, and maybe tweaking some configurations
+can works with oldest versions too.
+
+Checkout the `master <https://github.com/mrsarm/django-coleman/tree/master/>`_
+branch to get the latest version of Django Coleman with Django 2+.
 
 
 Features
