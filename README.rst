@@ -6,16 +6,14 @@ with **Django Admin**.
 
 
 Note
-^^^^
+----
 
-..
+The Branch **django/1.11** has the django-coleman source code
+that works with Django 1.11, and maybe tweaking some configurations
+can works with oldest versions too.
 
-   The Branch **django/1.11** has the django-coleman source code
-   that works with Django 1.11, and maybe tweaking some configurations
-   can works with oldest versions too.
-   
-   Checkout the `master <https://github.com/mrsarm/django-coleman/tree/master/>`_
-   branch to get the latest version of Django Coleman with Django 2+.
+Checkout the `master <https://github.com/mrsarm/django-coleman/tree/master/>`_
+branch to get the latest version of Django Coleman with Django 2+.
 
 
 Features
