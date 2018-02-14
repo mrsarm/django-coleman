@@ -5,7 +5,7 @@ Django Coleman: A very simple Task Management web app written
 with **Django Admin**.
 
 Note
-----
+^^^^
 ..
 
    The Branch **django/1.11** has the django-coleman source code
