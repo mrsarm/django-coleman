@@ -101,7 +101,7 @@ execute to compile the locales::
 
 
 Oldest Django versions
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 The Branch ``django/1.11`` has the django-coleman source code
 that works with Django 1.11, and maybe tweaking some configurations
