@@ -108,6 +108,17 @@ that works with Django 1.11, and maybe tweaking some configurations
 can works with oldest versions too.
 
 
+Some screenshots
+----------------
+
+.. image:: docs/source/_static/img/django-coleman-task-change.png
+   :alt: Django Coleman - Task Chance View
+
+
+.. image:: docs/source/_static/img/django-coleman-task-change-mobile.png
+   :alt: Django Coleman - Task Chance View, mobile version
+
+
 About
 -----
 
