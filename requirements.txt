@@ -1,5 +1,5 @@
 wheel
 Django==1.11.10
 django-flat-responsive==2.0
-dj-database-url==0.4.2
-django-admin-view-permission==1.4
+dj-database-url==0.5.0
+django-admin-view-permission==1.5
