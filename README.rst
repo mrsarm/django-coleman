@@ -111,6 +111,17 @@ execute to compile the locales::
     $ django-admin compilemessages
 
 
+Some screenshots
+----------------
+
+.. image:: docs/source/_static/img/django-coleman-task-change.png
+   :alt: Django Coleman - Task Chance View
+
+
+.. image:: docs/source/_static/img/django-coleman-task-change-mobile.png
+   :alt: Django Coleman - Task Chance View, mobile version
+
+
 About
 -----
 
