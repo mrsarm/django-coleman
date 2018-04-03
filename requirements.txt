@@ -1,4 +1,4 @@
 wheel
-Django==2.0.2
+Django==2.0.3
 dj-database-url==0.5.0
-django-admin-view-permission==1.5
+django-admin-view-permission==1.6
