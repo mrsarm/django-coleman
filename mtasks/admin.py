@@ -33,7 +33,7 @@ class TaskAdmin(admin.ModelAdmin):
     }
 
     def get_fieldsets(self, request, obj=None):
-        fieldsets = super(TaskAdmin, self).get_fieldsets(request, obj)
+        fieldsets = super().get_fieldsets(request, obj)
         if obj is None:
             fieldsets = (      # Creation form
                 (None, {'fields': ('title', ('user', 'deadline'), ('state', 'priority'), 'description')}),
@@ -43,7 +43,7 @@ class TaskAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if change is False:
             obj.created_by = request.user
-        super(TaskAdmin, self).save_model(request, obj, form, change)
+        super().save_model(request, obj, form, change)
 
 
 admin.site.register(Task, TaskAdmin)
