@@ -3,6 +3,7 @@ from django.db import models
 from django.forms import Textarea
 from django.utils.translation import ugettext_lazy as _
 from .models import Task, Item
+from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 
 
 class ItemInline(admin.TabularInline):
@@ -15,7 +16,12 @@ class TaskAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     search_fields = ('id', 'title', 'item__item_description',
                      'user__username', 'user__first_name', 'user__last_name')
-    list_filter = ('state', 'priority', 'deadline')
+    list_filter = (
+        ('user', RelatedDropdownFilter),
+        'state',
+        'priority',
+        'deadline'
+    )
     ordering = ('-created_at',)
     readonly_fields = ('created_at', 'last_modified', 'created_by')
     autocomplete_fields = ['user']
