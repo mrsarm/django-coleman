@@ -4,3 +4,4 @@ django-flat-responsive==2.0
 dj-database-url==0.5.0
 django-admin-view-permission==1.6
 django-admin-list-filter-dropdown==1.0.1
+django-advanced-filters==1.0.7.1

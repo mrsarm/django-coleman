@@ -1,3 +1,4 @@
+from advanced_filters.admin import AdminAdvancedFiltersMixin
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
@@ -11,7 +12,7 @@ class ItemInline(admin.TabularInline):
     extra = 0
 
 
-class TaskAdmin(admin.ModelAdmin):
+class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
     list_display = ('id', 'title', 'user', 'created_at', 'deadline', 'priority', 'state')
     list_display_links = ('id', 'title')
     search_fields = ('id', 'title', 'item__item_description',
@@ -21,6 +22,17 @@ class TaskAdmin(admin.ModelAdmin):
         'state',
         'priority',
         'deadline'
+    )
+    advanced_filter_fields = (
+        'user__username',
+        'state',
+        'priority',
+        'deadline',
+        'created_at',
+        'created_by',
+        'title',
+        'description',
+        'resolution',
     )
     ordering = ('-created_at',)
     readonly_fields = ('created_at', 'last_modified', 'created_by')

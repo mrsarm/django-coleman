@@ -13,14 +13,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from django.conf import settings
 from django.http import HttpResponseRedirect
 
+
 urlpatterns = [
     url(r'^$', lambda r: HttpResponseRedirect('admin/')),   # Remove this redirect if you add custom views
     url(r'^admin/', admin.site.urls),
+    url(r'^advanced_filters/', include('advanced_filters.urls'))
 ]
 
 admin.site.site_header = settings.SITE_HEADER
