@@ -3,6 +3,7 @@ from django.db import models
 from django.forms import Textarea
 from django.utils.translation import ugettext_lazy as _
 from .models import Task, Item
+from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 
 
 class ItemInline(admin.TabularInline):
@@ -15,9 +16,15 @@ class TaskAdmin(admin.ModelAdmin):
     list_display_links = ('id', 'title')
     search_fields = ('id', 'title', 'item__item_description',
                      'user__username', 'user__first_name', 'user__last_name')
-    list_filter = ('state', 'priority', 'deadline')
+    list_filter = (
+        ('user', RelatedDropdownFilter),
+        'state',
+        'priority',
+        'deadline'
+    )
     ordering = ('-created_at',)
     readonly_fields = ('created_at', 'last_modified', 'created_by')
+    autocomplete_fields = ['user']
 
     fieldsets = (               # Edition form
         (None,                   {'fields': ('title', ('user', 'deadline'), ('state', 'priority'), ('description', 'resolution'))}),
@@ -32,7 +39,7 @@ class TaskAdmin(admin.ModelAdmin):
     }
 
     def get_fieldsets(self, request, obj=None):
-        fieldsets = super(TaskAdmin, self).get_fieldsets(request, obj)
+        fieldsets = super().get_fieldsets(request, obj)
         if obj is None:
             fieldsets = (      # Creation form
                 (None, {'fields': ('title', ('user', 'deadline'), ('state', 'priority'), 'description')}),
@@ -42,7 +49,7 @@ class TaskAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         if change is False:
             obj.created_by = request.user
-        super(TaskAdmin, self).save_model(request, obj, form, change)
+        super().save_model(request, obj, form, change)
 
 
 admin.site.register(Task, TaskAdmin)

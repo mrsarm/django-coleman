@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'mtasks.apps.MtasksConfig',
     'flat_responsive',
     'admin_view_permission',
+    'django_admin_listfilter_dropdown',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

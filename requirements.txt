@@ -1,5 +1,6 @@
 wheel
-Django==1.11.10
+Django==1.11.14
 django-flat-responsive==2.0
 dj-database-url==0.5.0
-django-admin-view-permission==1.5
+django-admin-view-permission==1.6
+django-admin-list-filter-dropdown==1.0.1
