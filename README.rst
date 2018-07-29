@@ -16,6 +16,8 @@ Features
 * Each task may have items: sub-tasks to be done.
 * The built-in Django *Authentication and Authorization* system
   to manage users and groups, login, etc.
+* Module `django-advanced-filters <https://github.com/modlinltd/django-advanced-filters>`_
+  that allows to make more complex searches.
 * Spanish translations.
 
 .. image:: docs/source/_static/img/django-coleman.png
