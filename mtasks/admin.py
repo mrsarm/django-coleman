@@ -1,3 +1,4 @@
+from adminfilters.multiselect import UnionFieldListFilter
 from advanced_filters.admin import AdminAdvancedFiltersMixin
 from django.contrib import admin
 from django.db import models
@@ -19,8 +20,8 @@ class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
                      'user__username', 'user__first_name', 'user__last_name')
     list_filter = (
         ('user', RelatedDropdownFilter),
-        'state',
-        'priority',
+        ('state', UnionFieldListFilter),
+        ('priority', UnionFieldListFilter),
         'deadline'
     )
     advanced_filter_fields = (
