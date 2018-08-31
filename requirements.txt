@@ -1,7 +1,7 @@
 wheel
 Django==2.0.8
 dj-database-url==0.5.0
-django-admin-view-permission==1.7
+django-admin-view-permission==1.8
 django-admin-list-filter-dropdown==1.0.1
 -e git://github.com/modlinltd/django-advanced-filters.git@80e055e870ae7653213acd75a28dcb9bfa0e75af#egg=django-advanced-filters
--e git://github.com/mrsarm/django-adminfilters.git@008ebc8a013fe9bdad78df7e4c8f4da4e293b031#egg=django-adminfilters
+django-adminfilters==1.1.0
