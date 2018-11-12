@@ -29,8 +29,8 @@ Features
 Requirements
 ------------
 
-* Python 3.4+ (tested with Python 3.4 and 3.6).
-* Django 2.0 and other dependencies declared
+* Python 3.5+ (tested with Python 3.6).
+* Django 2.1 and other dependencies declared
   in the ``requirements.txt`` file (use virtual environments!).
 * A Django compatible database like PostgreSQL (by default uses
   the Python's built-in SQLite database for development purpose).
@@ -110,9 +110,13 @@ execute to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The Branch ``django/1.11`` has the django-coleman source code
-that works with Django 1.11, and maybe tweaking some configurations
-can works with oldest versions too.
+The ``master`` branch works with Django 2.1. The are two more branches:
+
+* ``django/2.0``
+* ``django/1.11``
+
+With the source code that works for each version of Django,
+and maybe tweaking some configurations can works with oldest versions too.
 
 
 Some screenshots
