@@ -35,6 +35,7 @@ case "$1" in
               --max-requests=5000 \
               --vacuum \
               --daemonize=dcoleman.log
+        sleep 0.7
         echo "started with PID $(cat /tmp/dcoleman-master.pid)"
         ;;
     *)
