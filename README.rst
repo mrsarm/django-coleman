@@ -39,6 +39,10 @@ Requirements
 Install and Run
 ---------------
 
+_(Optional)_ Create a virtual environment and activate it with::
+
+    $ python3 -m venv .venv && source .venv/bin/activate
+
 Install dependencies with::
 
     $ pip install -r requirements.txt
