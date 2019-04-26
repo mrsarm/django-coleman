@@ -30,7 +30,7 @@ Requirements
 ------------
 
 * Python 3.5+ (tested with Python 3.6).
-* Django 2.1 and other dependencies declared
+* Django 2.2 and other dependencies declared
   in the ``requirements.txt`` file (use virtual environments!).
 * A Django compatible database like PostgreSQL (by default uses
   the Python's built-in SQLite database for development purpose).
@@ -114,7 +114,7 @@ execute to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``master`` branch works with Django 2.1. The are two more branches:
+The ``master`` branch works with Django 2.2. The are two more branches:
 
 * ``django/2.0``
 * ``django/1.11``
