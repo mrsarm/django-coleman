@@ -53,6 +53,7 @@ Create the database with::
 
     $ python3 manage.py makemigrations
     $ python3 manage.py makemigrations mtasks
+    $ python3 manage.py makemigrations partner
     $ python3 manage.py migrate
 
 To create an admin user::

@@ -33,7 +33,7 @@ class Task(models.Model):
     )
 
     title = models.CharField(_("title"), max_length=200)
-    partner = models.ForeignKey(Partner, blank=True, on_delete=models.PROTECT)
+    partner = models.ForeignKey(Partner, blank=True, null=True, on_delete=models.PROTECT)
     description = models.TextField(_("description"), max_length=2000, null=True, blank=True)
     resolution = models.TextField(_("resolution"), max_length=2000, null=True, blank=True)
     deadline = models.DateField(_("deadline"), null=True, blank=True)
