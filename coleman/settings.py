@@ -24,7 +24,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'f*)$)fay97180m+ti%xi8si##u__h(8%(ipr1z-*lsjbucooz&'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True') == 'True'
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [ '*' ]
 
@@ -33,6 +33,7 @@ ALLOWED_HOSTS = [ '*' ]
 
 INSTALLED_APPS = [
     'mtasks.apps.MtasksConfig',
+    'partner.apps.PartnerConfig',
     'advanced_filters',
     'django_admin_listfilter_dropdown',
     'adminfilters',
@@ -113,9 +114,9 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = os.environ.get('LANGUAGE_CODE', 'en-us')
+LANGUAGE_CODE = os.getenv('LANGUAGE_CODE', 'en-us')
 
-TIME_ZONE = os.environ.get('TIME_ZONE', 'UTC')
+TIME_ZONE = os.getenv('TIME_ZONE', 'UTC')
 
 USE_I18N = True
 
@@ -132,8 +133,78 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
 
+# A sample logging configuration. The only tangible logging
+# performed by this configuration is to send an email to
+# the site admins on every HTTP 500 error when DEBUG=False.
+# See http://docs.djangoproject.com/en/1.8/topics/logging for
+# more details on how to customize your logging configuration.
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            #'format': '%(levelname)s %(asctime)s [%(name)s] %(process)d %(thread)d %(message)s',
+            'format': '%(asctime)s %(levelname)s [%(name)s] %(message)s',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
+        },
+        'logfile': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': BASE_DIR + "/app.log",
+            'maxBytes': 50000,
+            'backupCount': 2,
+            'formatter': 'verbose',
+        },
+        # 'mail_admins': {
+        #     'level': 'ERROR',
+        #     'class': 'django.utils.log.AdminEmailHandler'
+        # }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['console', 'logfile'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+        'django': {
+            'handlers': ['console', 'logfile'],
+            'propagate': True,
+            'level': 'INFO',
+        },
+        '': {
+            'handlers': ['console', 'logfile'],
+            'level': os.getenv('DJANGO_LOG_LEVEL', 'INFO'),
+        },
+    }
+}
+
+
+EMAIL_TIMEOUT = 3      # seconds
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'true') == 'true'
+EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'YOUREMAIL@gmail.com')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'PASS')
+
+
 #
 # Custom configurations
 #
 
-SITE_HEADER = os.environ.get('SITE_HEADER', 'Django Coleman - A Simple Task Manager')
+APP_NAME = os.getenv('APP_NAME', 'Django Coleman')
+APP_EMAIL = os.getenv('APP_EMAIL', 'no-reply@localhost')
+SITE_HEADER = os.getenv('SITE_HEADER', 'Django Coleman - A Simple Task Manager')
+
+ADMINS = (
+    (APP_NAME, APP_EMAIL)
+)
+
+TASKS_SEND_EMAILS_TO_ASSIGNED = os.getenv('TASKS_SEND_EMAILS_TO_ASSIGNED', 'false') == 'true'
+TASKS_SEND_EMAILS_TO_PARTNERS = os.getenv('TASKS_SEND_EMAILS_TO_PARTNERS', 'false') == 'true'

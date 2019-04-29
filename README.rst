@@ -12,7 +12,7 @@ Features
 --------
 
 * Simple task manager that allows to define a tasks with title,
-  description, responsible of the task, priority...
+  partner (customer, provider...), description, responsible of the task, priority...
 * Each task may have items: sub-tasks to be done.
 * The built-in Django *Authentication and Authorization* system
   to manage users and groups, login, etc.
@@ -20,6 +20,7 @@ Features
   that allows multiselection searches.
 * Module `django-advanced-filters <https://github.com/modlinltd/django-advanced-filters>`_
   that allows to make more complex searches.
+* Send emails when a task is created.
 * Spanish translations.
 
 .. image:: docs/source/_static/img/django-coleman.png
@@ -80,6 +81,9 @@ Available settings to override are:
 * ``SITE_HEADER``: Header title of the app. Default to *"Django Coleman - A Simple Task Manager"*.
 * ``DATABASE_URL``: Database string connection. Default uses SQLite database. Other
   example: ``postgresql://dcoleman:postgres@localhost/dcoleman_dev``.
+* More settings like email notifications, check the ``settings.py`` file
+  for more details, any variable that is set with ``os.getenv(...`` is able
+  to be configured using environment variables.
 
 To run in a production environment, check the `<README-production.rst>`_ notes, or
 see the official Django documentation.
@@ -139,6 +143,6 @@ About
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017-2018) Mariano Ruiz <mrsarm@gmail.com>
+**Authors**: (2017-2019) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3

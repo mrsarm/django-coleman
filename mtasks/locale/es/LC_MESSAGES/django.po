@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-07-31 08:41-0300\n"
+"POT-Creation-Date: 2019-04-29 20:03-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mariano Ruiz <mrsarm@gmail.com>\n"
 "Language: es\n"
@@ -16,110 +16,114 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: mtasks/admin.py:24
+#: mtasks/admin.py:48
 msgid "More..."
-msgstr "Mas informacion..."
+msgstr "Mas información..."
 
 #: mtasks/apps.py:7
 msgid " Task Management"
 msgstr " Gestión de Tareas"
 
-#: mtasks/models.py:8
+#: mtasks/models.py:11
+msgid "number"
+msgstr "número"
+
+#: mtasks/models.py:16
 msgid "Task"
 msgstr "Tarea"
 
-#: mtasks/models.py:9
+#: mtasks/models.py:17
 msgid "Tasks"
 msgstr "Tareas"
 
-#: mtasks/models.py:12
+#: mtasks/models.py:20
 msgid "To Do"
 msgstr "Para Hacer"
 
-#: mtasks/models.py:13
+#: mtasks/models.py:21
 msgid "In Progress"
 msgstr "En Progreso"
 
-#: mtasks/models.py:14
+#: mtasks/models.py:22
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: mtasks/models.py:15
+#: mtasks/models.py:23
 msgid "Done"
 msgstr "Hecho"
 
-#: mtasks/models.py:16
+#: mtasks/models.py:24
 msgid "Dismissed"
 msgstr "Desestimado"
 
-#: mtasks/models.py:20
+#: mtasks/models.py:28
 msgid "Low"
 msgstr "Baja"
 
-#: mtasks/models.py:21
+#: mtasks/models.py:29
 msgid "Normal"
 msgstr "Normal"
 
-#: mtasks/models.py:22
+#: mtasks/models.py:30
 msgid "High"
 msgstr "Alta"
 
-#: mtasks/models.py:23
+#: mtasks/models.py:31
 msgid "Critical"
 msgstr "Crítica"
 
-#: mtasks/models.py:24
+#: mtasks/models.py:32
 msgid "Blocker"
 msgstr "Bloqueada"
 
-#: mtasks/models.py:27
+#: mtasks/models.py:35
 msgid "title"
 msgstr "título"
 
-#: mtasks/models.py:28 mtasks/models.py:50
+#: mtasks/models.py:37 mtasks/models.py:112
 msgid "description"
 msgstr "descripción"
 
-#: mtasks/models.py:29
+#: mtasks/models.py:38
 msgid "resolution"
 msgstr "resolución"
 
-#: mtasks/models.py:30
+#: mtasks/models.py:39
 msgid "deadline"
 msgstr "fecha límite"
 
-#: mtasks/models.py:31
+#: mtasks/models.py:40
 msgid "assigned to"
 msgstr "asignado a"
 
-#: mtasks/models.py:33
+#: mtasks/models.py:42
 msgid "state"
 msgstr "estado"
 
-#: mtasks/models.py:34
+#: mtasks/models.py:43
 msgid "priority"
 msgstr "prioridad"
 
-#: mtasks/models.py:35
+#: mtasks/models.py:44
 msgid "created by"
 msgstr "creado por"
 
-#: mtasks/models.py:37
+#: mtasks/models.py:46
 msgid "created at"
 msgstr "creado en"
 
-#: mtasks/models.py:38
+#: mtasks/models.py:47
 msgid "last modified"
 msgstr "última vez modificado"
 
-#: mtasks/models.py:46
+#: mtasks/models.py:108
 msgid "Item"
 msgstr "Item"
 
-#: mtasks/models.py:47
+#: mtasks/models.py:109
 msgid "Check List"
 msgstr "Check List"
 
-#: mtasks/models.py:51
+#: mtasks/models.py:113
 msgid "done?"
 msgstr "¿listo?"

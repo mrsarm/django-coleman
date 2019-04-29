@@ -14,18 +14,21 @@ class ItemInline(admin.TabularInline):
 
 
 class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
-    list_display = ('id', 'title', 'user', 'created_at', 'deadline', 'priority', 'state')
-    list_display_links = ('id', 'title')
+    list_display = ('number', 'title', 'user', 'partner', 'created_at', 'deadline', 'priority', 'state')
+    list_display_links = ('number', 'title')
     search_fields = ('id', 'title', 'item__item_description',
-                     'user__username', 'user__first_name', 'user__last_name')
+                     'user__username', 'user__first_name', 'user__last_name',
+                     'partner__name', 'partner__email')
     list_filter = (
         ('user', RelatedDropdownFilter),
+        #('partner', RelatedDropdownFilter),
         ('state', UnionFieldListFilter),
         ('priority', UnionFieldListFilter),
         'deadline'
     )
     advanced_filter_fields = (
         'user__username',
+        'partner__name',
         'state',
         'priority',
         'deadline',
@@ -37,10 +40,11 @@ class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
     )
     ordering = ('-created_at',)
     readonly_fields = ('created_at', 'last_modified', 'created_by')
-    autocomplete_fields = ['user']
+    autocomplete_fields = ['user', 'partner']
 
     fieldsets = (               # Edition form
-        (None,                   {'fields': ('title', ('user', 'deadline'), ('state', 'priority'), ('description', 'resolution'))}),
+        (None,                   {'fields': ('title', ('user', 'partner'), 'deadline',
+                                             ('state', 'priority'), ('description', 'resolution'))}),
         (_('More...'), {'fields': (('created_at', 'last_modified'), 'created_by'), 'classes': ('collapse',)}),
     )
     inlines = [ItemInline]
@@ -55,7 +59,7 @@ class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
         fieldsets = super().get_fieldsets(request, obj)
         if obj is None:
             fieldsets = (      # Creation form
-                (None, {'fields': ('title', ('user', 'deadline'), ('state', 'priority'), 'description')}),
+                (None, {'fields': ('title', ('user', 'partner'), 'deadline', ('state', 'priority'), 'description')}),
             )
         return fieldsets
 
