@@ -22,6 +22,8 @@ Features
   that allows to make more complex searches.
 * Send emails when a task is created.
 * Spanish translations.
+* Basic Rest API configuration (disabled by default, check the
+  ``INSTALLED_APPS`` setting)
 
 .. image:: docs/source/_static/img/django-coleman.png
    :alt: Django Coleman
