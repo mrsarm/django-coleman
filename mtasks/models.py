@@ -71,36 +71,40 @@ class Task(models.Model):
         if settings.TASKS_SEND_EMAILS_TO_ASSIGNED and getattr(self, "user", None) and self.user.email:
             emails_to.append(self.user.email)
         if len(emails_to):
+            logger.info("[Task #%s] Sending task creation email to: %s", self.number, emails_to)
             try:
                 send_mail(
                     '[{app}] [#{id}] New Task Created'.format(app=settings.APP_NAME, id=self.number),
                     '''\
 New task #{id} created.
 
-Title: {title}
+Title:
+{title}
 
-Assigned: {user}
+Assigned:
+{user}
 
-Deadline (estimated): {deadline}
+Description:
+{description}
 
-Please note: Do not reply to this email. This email is sent from an unattended mailbox.
+Please note: Do NOT reply to this email. This email is sent from an unattended mailbox.
 Replies will not be read.
 
 ---
 {sign}
 '''.format(
                         id=self.number,
-                        user=str(self.user) if getattr(self, "user", None) else 'Not Assigned',
+                        user=str(self.user) if getattr(self, "user", None) else '(Not assigned yet)',
                         title=self.title,
-                        deadline=self.deadline if getattr(self, "deadline", None) else '-',
+                        description=self.description,
                         sign=settings.SITE_HEADER,
                     ),
                     settings.APP_EMAIL,
                     emails_to,
                 )
             except Exception as e:
-                logger.warning("Error trying to send the task creation email - %s: %s",
-                               e.__class__.__name__, str(e))
+                logger.warning("[Task #%s] Error trying to send the task creation email - %s: %s",
+                               self.number, e.__class__.__name__, str(e))
 
 
 class Item(models.Model):
