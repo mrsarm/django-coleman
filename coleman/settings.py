@@ -186,15 +186,6 @@ LOGGING = {
 }
 
 
-EMAIL_TIMEOUT = 3      # seconds
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.getenv('EMAIL_HOST', 'smtp.gmail.com')
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'true') == 'true'
-EMAIL_PORT = os.getenv('EMAIL_PORT', 587)
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'YOUREMAIL@gmail.com')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'PASS')
-
-
 REST_FRAMEWORK = {
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
@@ -216,5 +207,4 @@ ADMINS = (
     (APP_NAME, APP_EMAIL)
 )
 
-TASKS_SEND_EMAILS_TO_ASSIGNED = os.getenv('TASKS_SEND_EMAILS_TO_ASSIGNED', 'false') == 'true'
-TASKS_SEND_EMAILS_TO_PARTNERS = os.getenv('TASKS_SEND_EMAILS_TO_PARTNERS', 'false') == 'true'
+from .settings_emails import *

@@ -24,6 +24,9 @@ Features
 * Spanish translations.
 * Basic Rest API configuration (disabled by default, check the
   ``INSTALLED_APPS`` setting)
+* Optionally, you can use Django Coleman along with
+  `Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_
+  to allows users to follow the orders
 
 .. image:: docs/source/_static/img/django-coleman.png
    :alt: Django Coleman
@@ -96,6 +99,20 @@ Access the application
 ----------------------
 
 Like any Django app developed with Django Admin, enter with: http://localhost:8000/admin
+
+
+Django Coleman Viewer
+---------------------
+
+`Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_ is a
+small webapp that can be used along with Django Coleman to allow "partners" (customers, employees,
+providers...) to see their orders anonymously, without access to the Django Admin.
+
+You need to enable the email notifications and set ``TASKS_VIEWER_ENABLED = True`` setting to
+send the emails with the viewer order URL. See more configurations in the ``coleman/settings_emails.py``
+file, and checkout the viewer project.
+
+.. image:: https://raw.githubusercontent.com/mrsarm/tornado-dcoleman-mtasks-viewer/master/docs/source/_static/img/dcoleman-viewer.png
 
 
 Development

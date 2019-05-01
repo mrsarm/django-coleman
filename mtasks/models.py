@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from partner.models import Partner
 from django.core.mail import send_mail
+from hashlib import sha1
 
 
 logger = logging.getLogger(__name__)
@@ -58,7 +59,7 @@ class Task(models.Model):
         super().save(*args, **kwargs)
         if task_created:
             #  TODO: This is blocking call, it should be translated to an
-            #        asyncronous version
+            #        asynchronous version
             self.send_new_task_email()
 
     def send_new_task_email(self):
@@ -72,33 +73,22 @@ class Task(models.Model):
             emails_to.append(self.user.email)
         if len(emails_to):
             logger.info("[Task #%s] Sending task creation email to: %s", self.number, emails_to)
+            vals = {
+                "id": self.number,
+                "user": str(self.user) if getattr(self, "user", None) else '(Not assigned yet)',
+                "title": self.title,
+                "description": self.description or '-',
+                "sign": settings.SITE_HEADER,
+            }
+            if settings.TASKS_VIEWER_ENABLED:
+                email_template = settings.MTASKS_EMAIL_WITH_URL
+                vals["url"] = self.get_tasks_viewer_url()
+            else:
+                email_template = settings.MTASKS_EMAIL_WITHOUT_URL
             try:
                 send_mail(
                     '[{app}] [#{id}] New Task Created'.format(app=settings.APP_NAME, id=self.number),
-                    '''\
-New task #{id} created.
-
-Title:
-{title}
-
-Assigned:
-{user}
-
-Description:
-{description}
-
-Please note: Do NOT reply to this email. This email is sent from an unattended mailbox.
-Replies will not be read.
-
----
-{sign}
-'''.format(
-                        id=self.number,
-                        user=str(self.user) if getattr(self, "user", None) else '(Not assigned yet)',
-                        title=self.title,
-                        description=self.description,
-                        sign=settings.SITE_HEADER,
-                    ),
+                    email_template.format(**vals),
                     settings.APP_EMAIL,
                     emails_to,
                 )
@@ -106,6 +96,27 @@ Replies will not be read.
                 logger.warning("[Task #%s] Error trying to send the task creation email - %s: %s",
                                self.number, e.__class__.__name__, str(e))
 
+    def get_tasks_viewer_url(self):
+        """
+        Verification token added to the Tasks Viewer URL so each one
+        sent through email cannot be used to change the order number and
+        access to other orders.
+
+        It uses as input a salt code and
+        some immutables fields from the order (the ID number and
+        the date the order was created)
+
+        See: coleman/settings_emails.py
+             https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer
+        """
+        salt = settings.TASKS_VIEWER_HASH_SALT
+        if not settings.DEBUG and salt == '1two3':
+            logger.warning("Insecure salt code used to send email orders, do NOT use it in PRODUCTION")
+        created_at_as_iso = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%fZ")   # This ISO format is the same used
+                                                                                # used by the REST serializer
+        token = "{}-{}-{}".format(salt, self.pk, created_at_as_iso)             # SHA-1 is enough secure for
+        token = sha1(token.encode('utf-8')).hexdigest()                         # this purpose (SHA-2 is too long)
+        return settings.TASKS_VIEWER_ENDPOINT.format(number=self.number, token=token)
 
 class Item(models.Model):
     class Meta:
