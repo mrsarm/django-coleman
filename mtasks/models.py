@@ -100,9 +100,7 @@ class Task(models.Model):
         sent through email cannot be used to change the order number and
         access to other orders.
 
-        It uses as input a salt code and
-        some immutables fields from the order (the ID number and
-        the date the order was created)
+        It uses as input a salt code configured and the ID number.
 
         See: coleman/settings_emails.py
              https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer
@@ -110,9 +108,9 @@ class Task(models.Model):
         salt = settings.TASKS_VIEWER_HASH_SALT
         if not settings.DEBUG and salt == '1two3':
             logger.warning("Insecure salt code used to send email orders, do NOT use it in PRODUCTION")
-        created_at_as_iso = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%fZ")   # This ISO format is the same used
+        #created_at_as_iso = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%fZ")  # This ISO format is the same used
                                                                                 # used by the REST serializer
-        token = "{}-{}-{}".format(salt, self.pk, created_at_as_iso)             # SHA-1 is enough secure for
+        token = "{}-{}".format(salt, self.pk)                                   # SHA-1 is enough secure for
         token = sha1(token.encode('utf-8')).hexdigest()                         # this purpose (SHA-2 is too long)
         return settings.TASKS_VIEWER_ENDPOINT.format(number=self.number, token=token)
 
