@@ -12,6 +12,7 @@ staticfiles/
 
 # Log files
 *.log
+*.log.*
 
 # IDE files
 .idea
