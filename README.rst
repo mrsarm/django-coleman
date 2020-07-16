@@ -51,6 +51,7 @@ Install and Run
 
 Install dependencies with::
 
+    $ pip install --upgrade pip wheel
     $ pip install -r requirements.txt
     $ pip install -r requirements-dev.txt       # For DEV environments
 

@@ -1,6 +1,5 @@
-wheel
-Django==2.2.13
-sqlparse==0.3.0                             # via Django
+Django==2.2.14
+#sqlparse==0.3.1                            # via Django
 dj-database-url==0.5.0
 django-admin-list-filter-dropdown==1.0.2
 django-advanced-filters==1.1.1
