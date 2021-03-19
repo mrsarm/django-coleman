@@ -6,4 +6,4 @@ django-advanced-filters==1.1.1
 django-braces==1.13.0                       # via django-advanced-filters
 simplejson==3.16.0                          # via django-advanced-filters
 django-adminfilters==1.1.0
-djangorestframework==3.9.3
+djangorestframework==3.11.2
