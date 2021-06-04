@@ -1,4 +1,4 @@
-Django==2.2.14
+Django==2.2.21
 #sqlparse==0.3.1                            # via Django
 dj-database-url==0.5.0
 django-admin-list-filter-dropdown==1.0.2
