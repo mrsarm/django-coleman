@@ -32,7 +32,5 @@ dev.sh
 /static
 
 # Virtual environments
-venv/
-venv?.?/
+venv*/
 .venv*/
-

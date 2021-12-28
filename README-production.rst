@@ -65,17 +65,20 @@ has permissions to access to the Django Coleman resources.
 PostgreSQL database
 -------------------
 
-If you want to use a PostgreSQL database (recomended), before run
+If you want to use a PostgreSQL database (recommended), before run
 the `migration scripts <https://github.com/mrsarm/django-coleman/#install-and-run>`_
-be sure to create the user and the database used by Django Coleman, in the
-``run.sh`` script is used this string connection
+be sure to create the user and the database used by Django Coleman.
+In the ``run.sh`` script is used this string connection
 as example: ``postgresql://dcoleman:postgres@localhost/dcoleman_dev``,
 so to create a database ``dcoleman_dev`` with a user ``dcoleman`` and a
 password ``postgres``, first create the user with::
 
     $ sudo -u postgres createuser --createdb --no-superuser --no-createrole --pwprompt dcoleman
 
-And then create the database with::
+If you are already logged-in as a superuser, you can execute instead the following, within the SQL session:
+``CREATE USER dcoleman``.
+
+Then create the database with::
 
     $ sudo -u postgres psql
     postgres=# CREATE DATABASE dcoleman_dev OWNER dcoleman;
