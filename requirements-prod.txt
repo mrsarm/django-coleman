@@ -1,4 +1,4 @@
 # Web server
-uWSGI==2.0.17.1
+uWSGI==2.0.20
 # PosgreSQL driver
-psycopg2-binary==2.7.6.1
+psycopg2-binary==2.9.2

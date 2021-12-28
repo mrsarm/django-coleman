@@ -1,9 +1,21 @@
-Django==2.2.14
-#sqlparse==0.3.1                            # via Django
+Django==3.2.10
+asgiref==3.4.1                              # via Django
+sqlparse==0.4.2                             # via Django
+typing-extensions==4.0.1                    # via Django
 dj-database-url==0.5.0
-django-admin-list-filter-dropdown==1.0.2
-django-advanced-filters==1.1.1
-django-braces==1.13.0                       # via django-advanced-filters
-simplejson==3.16.0                          # via django-advanced-filters
-django-adminfilters==1.1.0
-djangorestframework==3.9.3
+django-admin-list-filter-dropdown==1.0.3
+
+# Workaround django-advanced-filters
+
+# The Latest version 1.3.0 doesn't work with Django 3.2, so forked version from
+# the pull request https://github.com/modlinltd/django-advanced-filters/pull/153 is used instead
+#django-advanced-filters==1.3.0
+-e git://github.com/hzung/django-advanced-filters.git@ed934d24b0da2a78e3db16e0f000c2ea9cc4627c#egg=django-advanced-filters
+
+# END Workaround django-advanced-filters
+
+django-braces==1.14.0                       # via django-advanced-filters
+simplejson==3.17.6                          # via django-advanced-filters
+six==1.16.0                                 # via django-advanced-filters
+django-adminfilters==1.7.1
+djangorestframework==3.13.1
