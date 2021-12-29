@@ -1,15 +1,12 @@
 #!/usr/bin/env bash
 
 usage () {
-    echo
     echo "Use: ./run.sh [dev|prod]"
-    echo
 }
 
 if [ "$#" == 0 -o "$1" == "-h" -o "$1" == "--help" ]
 then
-    echo
-    echo "Startup script application."
+    echo "Django Coleman HTTP Server startup script application."
     usage
     exit 1
 fi
@@ -39,9 +36,7 @@ case "$1" in
         echo "started with PID $(cat /tmp/dcoleman-master.pid)"
         ;;
     *)
-        echo
         echo "./run ERROR: unknown '$1' environment."
-        echo
         usage
         exit 2
         ;;

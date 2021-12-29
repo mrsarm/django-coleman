@@ -35,8 +35,8 @@ Features
 Requirements
 ------------
 
-* Python 3.5+ (tested with Python 3.6).
-* Django 2.2 and other dependencies declared
+* Python 3.6+ (tested with Python 3.6 and 3.10).
+* Django 3.2 and other dependencies declared
   in the ``requirements.txt`` file (use virtual environments!).
 * A Django compatible database like PostgreSQL (by default uses
   the Python's built-in SQLite database for development purpose).
@@ -139,8 +139,9 @@ execute to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``master`` branch works with Django 2.2. The are two more branches:
+The ``master`` branch works with Django 3.2. The are a few more branches (though unmaintained):
 
+* ``django/2.2``
 * ``django/2.0``
 * ``django/1.11``
 
@@ -164,6 +165,6 @@ About
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017-2019) Mariano Ruiz <mrsarm@gmail.com>
+**Authors**: (2017-2021) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3
