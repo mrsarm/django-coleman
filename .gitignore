@@ -34,3 +34,5 @@ dev.sh
 # Virtual environments
 venv*/
 .venv*/
+
+/.env

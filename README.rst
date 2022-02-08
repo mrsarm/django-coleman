@@ -80,6 +80,13 @@ set *debug* options to false::
 
     $ DEBUG=False LANGUAGE_CODE=es-ar python3 manage.py runserver
 
+Also in development environments an `.env` file can be used to setup
+the environment variables easily, checkout the `<.env.example>`_ as example.
+You can copy the example file and edit the variables you want to change::
+
+   $ cp .env.example .env
+   $ vi .env
+
 Available settings to override are:
 
 * ``DEBUG``: set the Django ``DEBUG`` option. Default ``True``.
@@ -89,7 +96,7 @@ Available settings to override are:
 * ``DATABASE_URL``: Database string connection. Default uses SQLite database. Other
   example: ``postgresql://dcoleman:postgres@localhost/dcoleman_dev``.
 * More settings like email notifications, check the ``settings.py`` file
-  for more details, any variable that is set with ``os.getenv(...`` is able
+  for more details, any variable that is set with ``env('...`` is able
   to be configured using environment variables.
 
 To run in a production environment, check the `<README-production.rst>`_ notes, or
@@ -109,9 +116,9 @@ Django Coleman Viewer
 small webapp that can be used along with Django Coleman to allow "partners" (customers, employees,
 providers...) to see their orders anonymously, without access to the Django Admin.
 
-You need to enable the email notifications and set ``TASKS_VIEWER_ENABLED = True`` setting to
-send the emails with the viewer order URL. See more configurations in the ``coleman/settings_emails.py``
-file, and checkout the viewer project.
+You need to enable the email notifications and set ``TASKS_VIEWER_ENABLED`` and ``REST_ENABLED``
+settings to ``True`` to send the emails with the viewer order URL. See more configurations in the
+``coleman/settings_emails.py`` file, and checkout the viewer project.
 
 .. image:: https://raw.githubusercontent.com/mrsarm/tornado-dcoleman-mtasks-viewer/master/docs/source/_static/img/dcoleman-viewer.png
 
@@ -165,6 +172,6 @@ About
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017-2021) Mariano Ruiz <mrsarm@gmail.com>
+**Authors**: (2017-2022) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3
