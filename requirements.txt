@@ -1,4 +1,4 @@
-Django==3.2.11
+Django==3.2.12
 asgiref==3.4.1                              # via Django
 sqlparse==0.4.2                             # via Django
 typing-extensions==4.0.1                    # via Django
