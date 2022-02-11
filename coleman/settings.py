@@ -148,67 +148,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR + '/static/'
 
 
-# A sample logging configuration. The only tangible logging
-# performed by this configuration is to send an email to
-# the site admins on every HTTP 500 error when DEBUG=False.
-# See https://docs.djangoproject.com/en/3.2/topics/logging/ for
-# more details on how to customize your logging configuration.
 
-LOG_LEVEL = env('LOG_LEVEL', 'INFO')
-DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL', LOG_LEVEL)
-DJANGO_DB_LOG_LEVEL = env('DJANGO_DB_LOG_LEVEL', LOG_LEVEL)
-DJANGO_REQ_LOG_LEVEL = env('DJANGO_REQ_LOG_LEVEL', DJANGO_LOG_LEVEL)
-
-LOGGING = {
-    'version': 1,
-    'disable_existing_loggers': False,
-    'formatters': {
-        'verbose': {
-            #'format': '%(levelname)s %(asctime)s [%(name)s] %(process)d %(thread)d %(message)s',
-            'format': '%(asctime)s %(levelname)s [%(name)s] %(message)s',
-        },
-    },
-    'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'verbose'
-        },
-        'logfile': {
-            'level': 'DEBUG',
-            'class': 'logging.handlers.RotatingFileHandler',
-            'filename': BASE_DIR + "/app.log",
-            'maxBytes': 50000,
-            'backupCount': 2,
-            'formatter': 'verbose',
-        },
-        # 'mail_admins': {
-        #     'level': 'ERROR',
-        #     'class': 'django.utils.log.AdminEmailHandler'
-        # }
-    },
-    'loggers': {
-        'django.request': {
-            'handlers': ['console', 'logfile'],
-            'level': DJANGO_REQ_LOG_LEVEL,
-            'propagate': False,
-        },
-        'django.db.backends': {
-            'handlers': ['console', 'logfile'],
-            'propagate': False,
-            'level': DJANGO_DB_LOG_LEVEL,
-        },
-        'django': {
-            'handlers': ['console', 'logfile'],
-            'propagate': True,
-            'level': DJANGO_LOG_LEVEL,
-        },
-        '': {
-            'handlers': ['console', 'logfile'],
-            'level': LOG_LEVEL,
-        },
-    }
-}
+from .settings_logging import *
 
 
 REST_FRAMEWORK = {
