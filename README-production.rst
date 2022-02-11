@@ -81,7 +81,8 @@ password ``postgres``, first create the user with::
     $ sudo -u postgres createuser --createdb --no-superuser --no-createrole --pwprompt dcoleman
 
 If you are already logged-in as a superuser, you can execute instead the following, within the SQL session:
-``CREATE USER dcoleman``.
+``CREATE USER dcoleman;``, and then to be prompted for a password within a ``psql`` session
+execute ``\password dcoleman``.
 
 Then create the database with::
 

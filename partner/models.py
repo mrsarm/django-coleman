@@ -17,9 +17,9 @@ class Partner(models.Model):
         verbose_name = _("Partner")
         verbose_name_plural = _("Partners")
 
-    name = models.CharField(_("name"), max_length=200)
-    email = models.EmailField(_("email"))
-    website = models.URLField(_("website"), blank=True)
+    name = models.CharField(_("name"), max_length=200, db_index=True)
+    email = models.EmailField(_("email"), blank=True, null=True)
+    website = models.URLField(_("website"), blank=True, null=True)
     is_company = models.BooleanField(_("is a company"), default=False)
     phone = models.CharField(_("phone"), max_length=40, null=True, blank=True)
     mobile = models.CharField(_("mobile"), max_length=40, null=True, blank=True)

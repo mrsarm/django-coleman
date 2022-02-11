@@ -58,8 +58,7 @@ Install dependencies with::
 Create the database with::
 
     $ python3 manage.py makemigrations
-    $ python3 manage.py makemigrations mtasks
-    $ python3 manage.py makemigrations partner
+    $ python3 manage.py makemigrations partner mtasks
     $ python3 manage.py migrate
 
 To create an admin user::
@@ -156,7 +155,7 @@ The ``master`` branch works with Django 3.2 LTS. The are a few more branches (th
 * ``django/1.11``
 
 With the source code that works for each version of Django,
-and maybe tweaking some configurations can works with oldest versions too.
+and maybe tweaking some configurations can works with older versions too.
 
 
 Some screenshots
