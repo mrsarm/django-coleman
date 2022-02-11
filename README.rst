@@ -53,7 +53,6 @@ Install dependencies with::
 
     $ pip install --upgrade pip wheel
     $ pip install -r requirements.txt
-    $ pip install -r requirements-dev.txt       # For DEV environments
 
 Create the database with::
 
@@ -69,7 +68,11 @@ Then run in development mode with::
 
     $ python3 manage.py runserver
 
-Or use the script to startup in the same mode::
+Add at the end ``0:5000`` if you want to open the port 5000
+instead of the default 8000, and the ``0:`` prefix is to
+let Django accepts connection outside localhost (optional).
+
+Or use the following script to startup in the same mode::
 
     $ ./run.sh dev
 
@@ -79,7 +82,7 @@ set *debug* options to false::
 
     $ DEBUG=False LANGUAGE_CODE=es-ar python3 manage.py runserver
 
-Also in development environments an `.env` file can be used to setup
+Also in development environments an ``.env`` file can be used to setup
 the environment variables easily, checkout the `<.env.example>`_ as example.
 You can copy the example file and edit the variables you want to change::
 

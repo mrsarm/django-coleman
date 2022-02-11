@@ -27,7 +27,7 @@ case "$1" in
         echo -n "Starting uWSGI server for Django Coleman... "
         uwsgi --module=coleman.wsgi:application \
               --master --pidfile=/tmp/dcoleman-master.pid \
-              --http=127.0.0.1:8000 \
+              --http=0:8000 \
               --processes=5 \
               --max-requests=5000 \
               --vacuum \
