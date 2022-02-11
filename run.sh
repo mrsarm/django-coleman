@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 usage () {
-    echo "Use: ./run.sh [dev|prod]"
+    echo "Use: ./run.sh [dev|prod|stop]"
 }
 
 if [ "$#" == 0 -o "$1" == "-h" -o "$1" == "--help" ]
@@ -11,32 +11,50 @@ then
     exit 1
 fi
 
+if [ -z "$PID_FILE" ]; then
+    PID_FILE="/tmp/dcoleman-master.pid"
+fi
+
+if [ -z "$PORT" ]; then
+    PORT="8000"
+fi
+
 case "$1" in
     dev)
         export DEBUG=True
-        python3 manage.py runserver 0:8000
+        python3 manage.py runserver 0:$PORT
         ;;
     prod)
-        export DEBUG=False
-        if [ -z "$DATABASE_URL" ]
-        then
-            # Default database, set the real string connection from the environment
-            # variable instead of hardcoding here
-            export DATABASE_URL="postgresql://dcoleman:postgres@localhost/dcoleman_dev"
-        fi
         echo -n "Starting uWSGI server for Django Coleman... "
+        if [ "$DEBUG" == "True" -o "$DEBUG" == "true" -o "$DEBUG" == "1"  ]
+        then
+          echo -n " (WARNING: setting DEBUG is enabled)  "
+        fi
         uwsgi --module=coleman.wsgi:application \
-              --master --pidfile=/tmp/dcoleman-master.pid \
-              --http=0:8000 \
+              --master --pidfile=$PID_FILE \
+              --http=0:$PORT \
               --processes=5 \
               --max-requests=5000 \
               --vacuum \
               --daemonize=dcoleman.log
         sleep 0.7
-        echo "started with PID $(cat /tmp/dcoleman-master.pid)"
+        echo "started with PID $(cat $PID_FILE)"
+        echo "Serving at http://localhost:8000/"
+        ;;
+    stop)
+        if [ -f "$PID_FILE" ]
+        then
+            PID="$(cat $PID_FILE)"
+            echo -n "Stopping uWSGI server for Django Coleman with PID $PID... "
+            kill -9 "$PID" && rm "$PID_FILE"
+            echo "done"
+        else
+          echo "No uWSGI server for Django Coleman found" >&2
+          exit 1
+        fi
         ;;
     *)
-        echo "./run ERROR: unknown '$1' environment."
+        echo "./run ERROR: unknown '$1' option." >&2
         usage
         exit 2
         ;;

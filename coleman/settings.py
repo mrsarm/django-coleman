@@ -147,6 +147,13 @@ STATIC_URL = '/static/'
 
 STATIC_ROOT = BASE_DIR + '/static/'
 
+# Whether to enable or not the StaticFilesHandler
+# to serve the static resources from the WSGI
+# server. Enabled by default if DEBUG = True,
+# in production environmets it's recommended
+# to serve the static resources with a reverse
+# proxy like Nginx, unless little workloads
+STATIC_ENABLE_WSGI_HANDLER = env.bool('STATIC_ENABLE_WSGI_HANDLER', DEBUG)
 
 
 from .settings_logging import *
