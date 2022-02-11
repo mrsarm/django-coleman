@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 20:03-0300\n"
+"POT-Creation-Date: 2022-02-09 18:56-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,66 +18,66 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: partner/admin.py:16
+#: admin.py:17
 msgid "More..."
 msgstr "Mas información..."
 
-#: partner/apps.py:7
+#: apps.py:7
 msgid " Partners"
 msgstr " Partners"
 
-#: partner/models.py:6
+#: models.py:6
 msgid "phones"
 msgstr "teléfonos"
 
-#: partner/models.py:17
+#: models.py:17
 msgid "Partner"
 msgstr "Partner"
 
-#: partner/models.py:18
+#: models.py:18
 msgid "Partners"
 msgstr "Partners"
 
-#: partner/models.py:20
+#: models.py:20
 msgid "name"
 msgstr "nombre"
 
-#: partner/models.py:21
+#: models.py:21
 msgid "email"
 msgstr "email"
 
-#: partner/models.py:22
+#: models.py:22
 msgid "website"
 msgstr "sitio web"
 
-#: partner/models.py:23
+#: models.py:23
 msgid "is a company"
 msgstr "es una compañía"
 
-#: partner/models.py:24
+#: models.py:24
 msgid "phone"
 msgstr "teléfono"
 
-#: partner/models.py:25
+#: models.py:25
 msgid "mobile"
 msgstr "teléfono móvil"
 
-#: partner/models.py:26
+#: models.py:26
 msgid "address"
 msgstr "dirección"
 
-#: partner/models.py:27
+#: models.py:27
 msgid "notes"
 msgstr "notas"
 
-#: partner/models.py:29
+#: models.py:29
 msgid "created by"
 msgstr "creado por"
 
-#: partner/models.py:31
+#: models.py:31
 msgid "created at"
 msgstr "creado en"
 
-#: partner/models.py:32
+#: models.py:32
 msgid "last modified"
 msgstr "última vez modificado"

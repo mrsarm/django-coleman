@@ -3,7 +3,7 @@ from advanced_filters.admin import AdminAdvancedFiltersMixin
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from .models import Task, Item
 from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 
@@ -13,6 +13,7 @@ class ItemInline(admin.TabularInline):
     extra = 0
 
 
+@admin.register(Task)
 class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
     list_display = ('number', 'title', 'user', 'partner', 'created_at', 'deadline', 'priority', 'state')
     list_display_links = ('number', 'title')
@@ -21,7 +22,7 @@ class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
                      'partner__name', 'partner__email')
     list_filter = (
         ('user', RelatedDropdownFilter),
-        #('partner', RelatedDropdownFilter),
+        # ('partner', RelatedDropdownFilter),
         ('state', UnionFieldListFilter),
         ('priority', UnionFieldListFilter),
         'deadline'
@@ -67,6 +68,3 @@ class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
         if change is False:
             obj.created_by = request.user
         super().save_model(request, obj, form, change)
-
-
-admin.site.register(Task, TaskAdmin)

@@ -1,6 +1,6 @@
 import logging
 from django.db import models
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.conf import settings
 from partner.models import Partner
 from coleman.utils.mail import send_mail_async as send_mail
@@ -108,11 +108,12 @@ class Task(models.Model):
         salt = settings.TASKS_VIEWER_HASH_SALT
         if not settings.DEBUG and salt == '1two3':
             logger.warning("Insecure salt code used to send email orders, do NOT use it in PRODUCTION")
-        #created_at_as_iso = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%fZ")  # This ISO format is the same used
+        # created_at_as_iso = self.created_at.strftime("%Y-%m-%dT%H:%M:%S.%fZ") # This ISO format is the same used
                                                                                 # used by the REST serializer
         token = "{}-{}".format(salt, self.pk)                                   # SHA-1 is enough secure for
         token = sha1(token.encode('utf-8')).hexdigest()                         # this purpose (SHA-2 is too long)
         return settings.TASKS_VIEWER_ENDPOINT.format(number=self.number, token=token)
+
 
 class Item(models.Model):
     class Meta:

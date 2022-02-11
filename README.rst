@@ -131,14 +131,17 @@ Some tips if you are improving this application.
 Translations
 ^^^^^^^^^^^^
 
-After add to the source code new texts to be translated, execute
-from the root folder (replace ``LANG`` by a valid language
-code like ``es``)::
+After add to the source code new texts to be translated, in the command
+line go to the module folder where the translations were edited, e.g.
+the "mtasks" folder, and execute the following replacing ``LANG``
+by a valid language code like ``es``::
 
     $ django-admin makemessages -l LANG
 
-Then go to the *.po* file and add the translations. Finally
-execute to compile the locales::
+Then go to the *.po* file and add the translations. In the
+case of the "mtasks" module with ``es`` language, the file is
+located at ``mtasks/locale/es/LC_MESSAGES/django.po``. Finally
+execute the following to compile the locales::
 
     $ django-admin compilemessages
 
@@ -146,7 +149,7 @@ execute to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``master`` branch works with Django 3.2. The are a few more branches (though unmaintained):
+The ``master`` branch works with Django 3.2 LTS. The are a few more branches (though unmaintained):
 
 * ``django/2.2``
 * ``django/2.0``
