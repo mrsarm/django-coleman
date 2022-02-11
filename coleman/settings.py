@@ -156,6 +156,7 @@ STATIC_ROOT = BASE_DIR + '/static/'
 
 LOG_LEVEL = env('LOG_LEVEL', 'INFO')
 DJANGO_LOG_LEVEL = env('DJANGO_LOG_LEVEL', LOG_LEVEL)
+DJANGO_DB_LOG_LEVEL = env('DJANGO_DB_LOG_LEVEL', LOG_LEVEL)
 DJANGO_REQ_LOG_LEVEL = env('DJANGO_REQ_LOG_LEVEL', DJANGO_LOG_LEVEL)
 
 LOGGING = {
@@ -192,6 +193,11 @@ LOGGING = {
             'level': DJANGO_REQ_LOG_LEVEL,
             'propagate': False,
         },
+        'django.db.backends': {
+            'handlers': ['console', 'logfile'],
+            'propagate': False,
+            'level': DJANGO_DB_LOG_LEVEL,
+        },
         'django': {
             'handlers': ['console', 'logfile'],
             'propagate': True,
@@ -220,7 +226,8 @@ REST_FRAMEWORK = {
 
 APP_NAME = env('APP_NAME', 'Django Coleman')
 APP_EMAIL = env('APP_EMAIL', 'no-reply@localhost')
-SITE_HEADER = env('SITE_HEADER', 'Django Coleman - A Simple Task Manager')
+SITE_HEADER = env('SITE_HEADER', 'Django Coleman')
+INDEX_TITLE = env('INDEX_TITLE', 'Task Management')
 
 ADMINS = (
     (APP_NAME, APP_EMAIL)

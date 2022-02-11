@@ -38,4 +38,5 @@ if settings.ADMIN:
         path('admin/', admin.site.urls),
     ] + urlpatterns
 
-admin.site.site_header = settings.SITE_HEADER
+admin.site.site_title = admin.site.site_header = settings.SITE_HEADER
+admin.site.index_title = settings.INDEX_TITLE
