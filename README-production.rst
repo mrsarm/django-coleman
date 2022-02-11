@@ -88,3 +88,17 @@ Then create the database with::
 
     $ sudo -u postgres psql
     postgres=# CREATE DATABASE dcoleman_dev OWNER dcoleman;
+
+Another way to create user and database in Postgres is to use
+the Procfile task ``createdb``, checkout the section below.
+
+
+Docker and Procfile
+-------------------
+
+**Docker**: 🚧 to implement ...
+
+**Procfile**: provided in the source code, the ``web``
+task allows to launch the webserver, checkout the `<.env.example>`_
+file and the `<README.rst>`_ guides of how to use
+it with *Honcho*.

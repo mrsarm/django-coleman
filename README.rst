@@ -26,7 +26,8 @@ Features
   ``INSTALLED_APPS`` setting)
 * Optionally, you can use Django Coleman along with
   `Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_
-  to allows users to follow the orders
+  to allows users to follow the orders.
+* Ready to use "production" configurations as reference.
 
 .. image:: docs/source/_static/img/django-coleman.png
    :alt: Django Coleman
@@ -74,9 +75,39 @@ let Django accepts connection outside localhost (optional).
 
 Or use the following script to startup in the same mode::
 
-    $ ./run.sh dev
+    $ uwsgi uwsgi.ini
 
-Some settings can be overwritten with environment variables.
+
+Procfile and Honcho
+^^^^^^^^^^^^^^^^^^^
+
+The project also include a `<Procfile>`_, ready to use
+in platforms that support it like Heroku, or with
+command line tools like `Honcho <https://honcho.readthedocs.io>`_
+or Foreman.
+
+Honcho has the advantage of loading the environment variables
+from an .env file automatically (see section below). To install
+it execute ``pip3 install honcho``. Once installed, to run
+the app with Honcho::
+
+    $ honcho start web
+
+There are other shortcuts in the Procfile, like a command to
+create both the user and database (you have to provide the
+"master" password from the user "postgres" in an env variable)::
+
+    $  PG_PASSWORD=postgres honcho start createdb
+
+And here is the command to automatically creates an "admin" user
+with password "admin1234"::
+
+    $ honcho start createadmin
+
+Settings
+--------
+
+Most settings can be overwritten with environment variables.
 For example to overwrite the language translations of the application and
 set *debug* options to false::
 
@@ -89,7 +120,7 @@ You can copy the example file and edit the variables you want to change::
    $ cp .env.example .env
    $ vi .env
 
-Available settings to override are:
+Some available settings:
 
 * ``DEBUG``: set the Django ``DEBUG`` option. Default ``True``.
 * ``TIME_ZONE``: default ``UTC``. Other example: ``America/Buenos_Aires``.
