@@ -1,8 +1,9 @@
 from django.contrib import admin
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from .models import Partner
 
 
+@admin.register(Partner)
 class PartnerAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'email', 'phones', 'address', 'is_company')
     list_display_links = ('id', 'name')
@@ -28,6 +29,3 @@ class PartnerAdmin(admin.ModelAdmin):
         if change is False:
             obj.created_by = request.user
         super().save_model(request, obj, form, change)
-
-
-admin.site.register(Partner, PartnerAdmin)

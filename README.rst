@@ -26,7 +26,8 @@ Features
   ``INSTALLED_APPS`` setting)
 * Optionally, you can use Django Coleman along with
   `Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_
-  to allows users to follow the orders
+  to allows users to follow the orders.
+* Ready to use "production" configurations as reference.
 
 .. image:: docs/source/_static/img/django-coleman.png
    :alt: Django Coleman
@@ -53,13 +54,11 @@ Install dependencies with::
 
     $ pip install --upgrade pip wheel
     $ pip install -r requirements.txt
-    $ pip install -r requirements-dev.txt       # For DEV environments
 
 Create the database with::
 
     $ python3 manage.py makemigrations
-    $ python3 manage.py makemigrations mtasks
-    $ python3 manage.py makemigrations partner
+    $ python3 manage.py makemigrations partner mtasks
     $ python3 manage.py migrate
 
 To create an admin user::
@@ -70,17 +69,60 @@ Then run in development mode with::
 
     $ python3 manage.py runserver
 
-Or use the script to startup in the same mode::
+Add at the end ``0:5000`` if you want to open the port 5000
+instead of the default 8000, and the ``0:`` prefix is to
+let Django accepts connection outside localhost (optional).
 
-    $ ./run.sh dev
+Or use the following script to startup in "production" mode,
+with a uWSGI server::
 
-Some settings can be overwritten with environment variables.
+    $ uwsgi uwsgi.ini
+
+
+Procfile and Honcho
+^^^^^^^^^^^^^^^^^^^
+
+The project also include a `<Procfile>`_, ready to use
+in platforms that support it like Heroku, or with
+command line tools like `Honcho <https://honcho.readthedocs.io>`_
+or Foreman.
+
+Honcho has the advantage of loading the environment variables
+from an .env file automatically (see section below). To install
+it execute ``pip3 install honcho``. Once installed, to run
+the app with Honcho::
+
+    $ honcho start web
+
+There are other shortcuts in the Procfile, like a command to
+create both the user and database (you have to provide the
+"master" password from the user "postgres" in an env variable)::
+
+    $  PG_PASSWORD=postgres honcho start createdb
+
+And here is the command to automatically creates an "admin" user
+with password "admin1234"::
+
+    $ honcho start createadmin
+
+
+Settings
+--------
+
+Most settings can be overwritten with environment variables.
 For example to overwrite the language translations of the application and
 set *debug* options to false::
 
     $ DEBUG=False LANGUAGE_CODE=es-ar python3 manage.py runserver
 
-Available settings to override are:
+Also in development environments an ``.env`` file can be used to setup
+the environment variables easily, checkout the `<.env.example>`_ as example.
+You can copy the example file and edit the variables you want to change::
+
+   $ cp .env.example .env
+   $ vi .env
+
+Some available settings:
 
 * ``DEBUG``: set the Django ``DEBUG`` option. Default ``True``.
 * ``TIME_ZONE``: default ``UTC``. Other example: ``America/Buenos_Aires``.
@@ -89,7 +131,7 @@ Available settings to override are:
 * ``DATABASE_URL``: Database string connection. Default uses SQLite database. Other
   example: ``postgresql://dcoleman:postgres@localhost/dcoleman_dev``.
 * More settings like email notifications, check the ``settings.py`` file
-  for more details, any variable that is set with ``os.getenv(...`` is able
+  for more details, any variable that is set with ``env('...`` is able
   to be configured using environment variables.
 
 To run in a production environment, check the `<README-production.rst>`_ notes, or
@@ -109,9 +151,9 @@ Django Coleman Viewer
 small webapp that can be used along with Django Coleman to allow "partners" (customers, employees,
 providers...) to see their orders anonymously, without access to the Django Admin.
 
-You need to enable the email notifications and set ``TASKS_VIEWER_ENABLED = True`` setting to
-send the emails with the viewer order URL. See more configurations in the ``coleman/settings_emails.py``
-file, and checkout the viewer project.
+You need to enable the email notifications and set ``TASKS_VIEWER_ENABLED`` and ``REST_ENABLED``
+settings to ``True`` to send the emails with the viewer order URL. See more configurations in the
+``coleman/settings_emails.py`` file, and checkout the viewer project.
 
 .. image:: https://raw.githubusercontent.com/mrsarm/tornado-dcoleman-mtasks-viewer/master/docs/source/_static/img/dcoleman-viewer.png
 
@@ -124,14 +166,17 @@ Some tips if you are improving this application.
 Translations
 ^^^^^^^^^^^^
 
-After add to the source code new texts to be translated, execute
-from the root folder (replace ``LANG`` by a valid language
-code like ``es``)::
+After add to the source code new texts to be translated, in the command
+line go to the module folder where the translations were edited, e.g.
+the "mtasks" folder, and execute the following replacing ``LANG``
+by a valid language code like ``es``::
 
     $ django-admin makemessages -l LANG
 
-Then go to the *.po* file and add the translations. Finally
-execute to compile the locales::
+Then go to the *.po* file and add the translations. In the
+case of the "mtasks" module with ``es`` language, the file is
+located at ``mtasks/locale/es/LC_MESSAGES/django.po``. Finally
+execute the following to compile the locales::
 
     $ django-admin compilemessages
 
@@ -139,14 +184,14 @@ execute to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``master`` branch works with Django 3.2. The are a few more branches (though unmaintained):
+The ``master`` branch works with Django 3.2 LTS. The are a few more branches (though unmaintained):
 
 * ``django/2.2``
 * ``django/2.0``
 * ``django/1.11``
 
 With the source code that works for each version of Django,
-and maybe tweaking some configurations can works with oldest versions too.
+and maybe tweaking some configurations can works with older versions too.
 
 
 Some screenshots
@@ -165,6 +210,6 @@ About
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017-2021) Mariano Ruiz <mrsarm@gmail.com>
+**Authors**: (2017-2022) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3

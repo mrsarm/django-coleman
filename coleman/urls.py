@@ -1,7 +1,7 @@
 """coleman URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/2.2/topics/http/urls/
+    https://docs.djangoproject.com/en/3.2/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -27,12 +27,16 @@ router = routers.DefaultRouter()
 router.register(r'tasks', TaskViewSet)
 
 
-
 urlpatterns = [
-    url(r'^$', lambda r: HttpResponseRedirect('admin/')),   # Remove this redirect if you add custom views
-    path('admin/', admin.site.urls),
     url(r'^advanced_filters/', include('advanced_filters.urls')),
     url(r'^api/v1/', include(router.urls)),
 ]
 
-admin.site.site_header = settings.SITE_HEADER
+if settings.ADMIN:
+    urlpatterns = [
+        url(r'^$', lambda r: HttpResponseRedirect('admin/')),   # Remove this redirect if you add custom views
+        path('admin/', admin.site.urls),
+    ] + urlpatterns
+
+admin.site.site_title = admin.site.site_header = settings.SITE_HEADER
+admin.site.index_title = settings.INDEX_TITLE
