@@ -73,7 +73,8 @@ Add at the end ``0:5000`` if you want to open the port 5000
 instead of the default 8000, and the ``0:`` prefix is to
 let Django accepts connection outside localhost (optional).
 
-Or use the following script to startup in the same mode::
+Or use the following script to startup in "production" mode,
+with a uWSGI server::
 
     $ uwsgi uwsgi.ini
 
@@ -103,6 +104,7 @@ And here is the command to automatically creates an "admin" user
 with password "admin1234"::
 
     $ honcho start createadmin
+
 
 Settings
 --------
