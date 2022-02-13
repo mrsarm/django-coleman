@@ -101,9 +101,15 @@ class Task(models.Model):
         return "{:08d}".format(self.pk)
 
     def save(self, *args, **kwargs):
-        task_created = self.pk is None
+        send_email = self.pk is None
+        if not send_email and self.partner:
+            old_task_data = Task.objects.get(pk=self.pk)
+            if old_task_data.partner != self.partner:
+                send_email = True
         super().save(*args, **kwargs)
-        if task_created:
+        if send_email:
+            # Emails are sent if the order is new
+            # or the partner has changed
             self.send_new_task_email()
 
     def clean(self):
