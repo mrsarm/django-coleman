@@ -97,7 +97,7 @@ class Task(models.Model):
         return "[%s] %s" % (self.number, self.title)
 
     @property
-    def number(self):
+    def number(self) -> str:
         return "{:08d}".format(self.pk)
 
     def save(self, *args, **kwargs):
@@ -113,14 +113,14 @@ class Task(models.Model):
             if Task.objects \
                     .others(self.pk, title=title, partner=self.partner) \
                     .exclude(state__in=(State.DONE.value, State.DISMISSED.value)) \
-                    .count() > 0:
-                validation_errors['title'] = _('Task with this title and partner already exists.')
+                    .exists():
+                validation_errors['title'] = _('Open task with this title and partner already exists.')
         else:
             if Task.objects \
-                    .others(self.pk, title=title) \
+                    .others(self.pk, title=title, partner=None) \
                     .exclude(state__in=(State.DONE.value, State.DISMISSED.value)) \
-                    .count() > 0:
-                validation_errors['title'] = _('Task with this title and no partner already exists.')
+                    .exists():
+                validation_errors['title'] = _('Open task with this title and no partner already exists.')
 
         # Add more validations HERE
 
