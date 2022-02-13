@@ -27,6 +27,7 @@ Features
 * Optionally, you can use Django Coleman along with
   `Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_
   to allows users to follow the orders.
+* Pytest with some tests as example and code coverage reports configured.
 * Ready to use "production" configurations as reference.
 
 .. image:: docs/source/_static/img/django-coleman.png
@@ -142,6 +143,16 @@ Access the application
 ----------------------
 
 Like any Django app developed with Django Admin, enter with: http://localhost:8000/admin
+
+
+Tests
+-----
+
+Tests run with Pytest::
+
+    $ pytest
+
+Or you the Honcho task that also generated the coverage tests: ``honcho start --no-prefix test``.
 
 
 Django Coleman Viewer
