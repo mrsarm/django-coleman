@@ -13,6 +13,10 @@ EMAIL_PORT = env.int('EMAIL_PORT', 587)
 EMAIL_HOST_USER = env('EMAIL_HOST_USER', 'YOUREMAIL@gmail.com')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', 'PASS')
 
+# Use 'django.core.mail.backends.console.EmailBackend'
+# to use a fake backend that prints out the email
+# in the standard output instead of sending the emails
+EMAIL_BACKEND = env('EMAIL_BACKEND', 'django.core.mail.backends.smtp.EmailBackend')
 
 TASKS_SEND_EMAILS_TO_ASSIGNED = env.bool('TASKS_SEND_EMAILS_TO_ASSIGNED', False)
 TASKS_SEND_EMAILS_TO_PARTNERS = env.bool('TASKS_SEND_EMAILS_TO_PARTNERS', False)

@@ -97,13 +97,19 @@ class Task(models.Model):
         return "[%s] %s" % (self.number, self.title)
 
     @property
-    def number(self):
+    def number(self) -> str:
         return "{:08d}".format(self.pk)
 
     def save(self, *args, **kwargs):
-        task_created = self.pk is None
+        send_email = self.pk is None
+        if not send_email and self.partner:
+            old_task_data = Task.objects.get(pk=self.pk)
+            if old_task_data.partner != self.partner:
+                send_email = True
         super().save(*args, **kwargs)
-        if task_created:
+        if send_email:
+            # Emails are sent if the order is new
+            # or the partner has changed
             self.send_new_task_email()
 
     def clean(self):
@@ -113,14 +119,14 @@ class Task(models.Model):
             if Task.objects \
                     .others(self.pk, title=title, partner=self.partner) \
                     .exclude(state__in=(State.DONE.value, State.DISMISSED.value)) \
-                    .count() > 0:
-                validation_errors['title'] = _('Task with this title and partner already exists.')
+                    .exists():
+                validation_errors['title'] = _('Open task with this title and partner already exists.')
         else:
             if Task.objects \
-                    .others(self.pk, title=title) \
+                    .others(self.pk, title=title, partner=None) \
                     .exclude(state__in=(State.DONE.value, State.DISMISSED.value)) \
-                    .count() > 0:
-                validation_errors['title'] = _('Task with this title and no partner already exists.')
+                    .exists():
+                validation_errors['title'] = _('Open task with this title and no partner already exists.')
 
         # Add more validations HERE
 

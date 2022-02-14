@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-import dj_database_url
 
 from . import env
 
@@ -100,7 +99,9 @@ WSGI_APPLICATION = 'coleman.wsgi.application'
 # See more options at https://github.com/kennethreitz/dj-database-url
 #
 DATABASES = {
-    "default": env.dj_db_url('DATABASE_URL', 'sqlite:///%s/db.sqlite3' % BASE_DIR)
+    'default': env.dj_db_url('DATABASE_URL',
+                             'sqlite:///%s/db.sqlite3' % BASE_DIR,
+                             conn_max_age=env.int('CONN_MAX_AGE', 600)),
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'

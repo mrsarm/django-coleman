@@ -1,0 +1,2 @@
+[run]
+omit = mtasks/tests/*,mtasks/migrations/*,partner/migrations/*,coleman/*,venv*/*,.venv*/*
