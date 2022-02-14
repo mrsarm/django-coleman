@@ -28,7 +28,6 @@ router.register(r'tasks', TaskViewSet)
 
 
 urlpatterns = [
-    url(r'^advanced_filters/', include('advanced_filters.urls')),
     url(r'^api/v1/', include(router.urls)),
 ]
 

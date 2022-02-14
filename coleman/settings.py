@@ -39,7 +39,6 @@ ALLOWED_HOSTS = [ '*' ]
 INSTALLED_APPS = [
     'mtasks.apps.MtasksConfig',
     'partner.apps.PartnerConfig',
-    'advanced_filters',
     'django_admin_listfilter_dropdown',
     'adminfilters',
     'django.contrib.admin',

@@ -1,5 +1,4 @@
 from adminfilters.multiselect import UnionFieldListFilter
-from advanced_filters.admin import AdminAdvancedFiltersMixin
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
@@ -14,7 +13,7 @@ class ItemInline(admin.TabularInline):
 
 
 @admin.register(Task)
-class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
+class TaskAdmin(admin.ModelAdmin):
     list_display = ('number', 'title', 'user', 'partner', 'created_at', 'deadline', 'priority', 'state')
     list_display_links = ('number', 'title')
     search_fields = ('id', 'title', 'item__item_description',
@@ -26,18 +25,6 @@ class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
         ('state', UnionFieldListFilter),
         ('priority', UnionFieldListFilter),
         'deadline'
-    )
-    advanced_filter_fields = (
-        'user__username',
-        'partner__name',
-        'state',
-        'priority',
-        'deadline',
-        'created_at',
-        'created_by',
-        'title',
-        'description',
-        'resolution',
     )
     ordering = TASK_PRIORITY_FIELDS
     readonly_fields = ('created_at', 'last_modified', 'created_by')
