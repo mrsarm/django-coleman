@@ -18,8 +18,6 @@ Features
   to manage users and groups, login, etc.
 * Module `django-adminfilters <https://github.com/mrsarm/django-adminfilters>`_
   that allows multiselection searches.
-* Module `django-advanced-filters <https://github.com/modlinltd/django-advanced-filters>`_
-  that allows to make more complex searches.
 * Send emails when a task is created.
 * Spanish translations.
 * Basic Rest API configuration (disabled by default, check the
@@ -99,7 +97,7 @@ There are other shortcuts in the Procfile, like a command to
 create both the user and database (you have to provide the
 "master" password from the user "postgres" in an env variable)::
 
-    $  PG_PASSWORD=postgres honcho start createdb
+    $  POSTGRES_PASSWORD=postgres honcho start createdb
 
 And here is the command to automatically creates an "admin" user
 with password "admin1234"::

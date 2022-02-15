@@ -34,29 +34,29 @@ LOGGING = {
             'backupCount': 2,
             'formatter': 'verbose',
         },
-        # 'mail_admins': {
-        #     'level': 'ERROR',
-        #     'class': 'django.utils.log.AdminEmailHandler'
-        # }
+        'mail_admins': {
+            'level': 'ERROR',
+            'class': 'django.utils.log.AdminEmailHandler'
+        }
     },
     'loggers': {
         'django.request': {
-            'handlers': ['console', 'logfile'],
+            'handlers': ['console'],
             'level': LOG_LEVEL_DJANGO_REQ,
             'propagate': False,
         },
         'django.db.backends': {
-            'handlers': ['console', 'logfile'],
+            'handlers': ['console'],
             'propagate': False,
             'level': LOG_LEVEL_DJANGO_DB,
         },
         'django': {
-            'handlers': ['console', 'logfile'],
+            'handlers': ['console'],
             'propagate': True,
             'level': LOG_LEVEL_DJANGO,
         },
         '': {
-            'handlers': ['console', 'logfile'],
+            'handlers': ['console'],
             'level': LOG_LEVEL,
         },
     }

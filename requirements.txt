@@ -4,8 +4,6 @@
 #
 #    pip-compile --no-emit-index-url --output-file=requirements.txt requirements.in
 #
--e git+git://github.com/hzung/django-advanced-filters.git@ed934d24b0da2a78e3db16e0f000c2ea9cc4627c#egg=django-advanced-filters
-    # via -r requirements.in
 asgiref==3.4.1
     # via django
 dj-database-url==0.5.0
@@ -33,9 +31,5 @@ pytz==2021.3
     # via
     #   django
     #   djangorestframework
-simplejson==3.17.6
-    # via django-advanced-filters
-six==1.16.0
-    # via -r requirements.in
 sqlparse==0.4.2
     # via django
