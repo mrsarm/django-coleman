@@ -26,6 +26,8 @@ Features
   `Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_
   to allows users to follow the orders.
 * Pytest with some tests as example and code coverage reports configured.
+* Docker and Docker Compose configurations (publishing the image in
+  Docker Hub *in progress*).
 * Ready to use "production" configurations as reference.
 
 .. image:: docs/source/_static/img/django-coleman.png
@@ -36,8 +38,8 @@ Requirements
 ------------
 
 * Python 3.6+ (tested with Python 3.6 and 3.10).
-* Django 3.2 and other dependencies declared
-  in the ``requirements.txt`` file (use virtual environments!).
+* Django 3.2 LTS and other dependencies declared in
+  the ``requirements.txt`` file (use virtual environments or containers!).
 * A Django compatible database like PostgreSQL (by default uses
   the Python's built-in SQLite database for development purpose).
 
@@ -105,6 +107,46 @@ with password "admin1234"::
     $ honcho start createadmin
 
 
+Docker
+------
+
+A reference `<Dockerfile>`_ is provided, that's is going to be published
+in Docker Hub *(in progress)*.
+
+Also a `<docker-compose.yml>`_ is provided, you can run all from here,
+Django Coleman, the viewer app and Postgres::
+
+    $ docker-compose up
+
+The first time it runs some errors about the DB are shown, that's because
+you need to create the DB and the structure (tables, indexes), all can
+be created in another terminal executing::
+
+    $ docker-compose run django-coleman-provision
+
+Even a user ``admin`` with password ``admin1234`` is created.
+
+If you want to then open a `psql` session for the DB from the
+containers: ``docker-compose run psql``.
+
+By default a local volume ``django-coleman_data`` is attached
+to the Postgres container so even executing ``docker-compose down``
+won't delete the data, but if you want to start from scratch:
+
+    $ docker-compose down
+    $ docker volume rm pg-coleman_data
+
+Add changes in the code
+^^^^^^^^^^^^^^^^^^^^^^^
+
+When adding changes in the code, the image needs to be rebuild::
+
+    $ docker-compose build
+
+Then run again. A script ``docker-build.sh`` with more advance
+features and without using docker-compose is also provided
+to re-build the image.
+
 Settings
 --------
 
@@ -150,7 +192,8 @@ Tests run with Pytest::
 
     $ pytest
 
-Or you the Honcho task that also generated the coverage tests: ``honcho start --no-prefix test``.
+Or use the Honcho task that also generates a report with
+the tests coverage: ``honcho start --no-prefix test``.
 
 
 Django Coleman Viewer
