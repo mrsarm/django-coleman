@@ -10,7 +10,10 @@ ENV CXXFLAGS="-mtune=intel -Os -pipe" \
 
 WORKDIR /usr/src/app
 
-COPY requirements*.txt /usr/src/app/
+COPY requirements/requirements-dev.txt \
+     requirements/requirements-test.txt \
+     requirements/requirements-prod.txt \
+         /usr/src/app/
 
 RUN buildDeps=' \
         build-essential \
@@ -42,9 +45,9 @@ RUN buildDeps=' \
     && pip install --no-cache-dir -U pip \
     && pip3 install --no-cache-dir \
         honcho \
-    && pip3 install --no-cache-dir -r requirements.txt \
-    && pip3 install --no-cache-dir -r requirements-prod.txt \
+    && pip3 install --no-cache-dir -r requirements-dev.txt \
     && pip3 install --no-cache-dir -r requirements-test.txt \
+    && pip3 install --no-cache-dir -r requirements-prod.txt \
     # cleanup
     && apt-get purge --auto-remove -yqq $buildDeps \
     && apt-get autoremove -yqq --purge \

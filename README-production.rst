@@ -14,7 +14,7 @@ execute::
 
 Before run the first time, install the dependencies with::
 
-    $ pip install -r requirements-prod.txt
+    $ pip install -r requirements/requirements-prod.txt
 
 The static resources must served with a HTTP server
 like *Nginx* or *Apache HTTP*. To collect all static resources
