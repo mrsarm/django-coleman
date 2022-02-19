@@ -1,0 +1,49 @@
+# Files to ignore when building Docker image, basically the same than .gitignore
+
+# Python compiled byte code
+*.pyc
+
+# SQLite3 database
+*.sqlite3
+
+# Staticfiles
+staticfiles/
+
+# Compiled messages
+*.mo
+
+# Log files
+*.log
+*.log.*
+
+# IDE files
+.idea
+*.iml
+*.ipr
+*.iws
+.settings
+.project
+.pydevproject
+.directory
+
+# Script for different environments
+prod.sh
+dev.sh
+
+# Static files collected
+/static
+
+# Virtual environments
+venv*/
+.venv*/
+
+/.env*
+
+/htmlcov
+
+# Files from source that aren't needed in the image
+Dockerfile
+README*
+COPYING
+requirements*.in
+__*

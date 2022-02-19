@@ -1,0 +1,146 @@
+version: '3.7'
+
+volumes:
+  data:       # Volume name listed: django-coleman_data
+    driver: local
+
+services:
+  django-coleman:
+    image: "mrsarm/django-coleman:${TAG:-latest}"
+    build:
+      context: .
+      args:
+        - BUILD
+    ports:
+      - "8000:8000"
+    environment:
+      # Set the values in an .env file or here
+      - PYTHONUNBUFFERED
+      - DEBUG
+      - DATABASE_URL
+      - POSTGRES_PASSWORD
+      - LANGUAGE_CODE
+      - PORT
+      - REST_ENABLED
+      - SECRET_KEY
+      - LOG_LEVEL
+      - LOG_LEVEL_DJANGO
+      - LOG_LEVEL_DJANGO_DB
+      - LOG_LEVEL_DJANGO_REQ
+      - EMAIL_HOST_USER
+      - EMAIL_HOST_PASSWORD
+      - EMAIL_BACKEND
+      - TASKS_SEND_EMAILS_TO_ASSIGNED
+      - TASKS_SEND_EMAILS_TO_PARTNERS
+      - TASKS_VIEWER_ENABLED
+      - AUTH_PASSWORD_VALIDATORS_ENABLED
+      - APP_EMAIL
+      - APP_NAME
+      - SITE_HEADER
+      - ADMIN_USERNAME
+      - ADMIN_PASSWORD
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:14
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - data:/var/lib/postgresql/data
+    command: ["postgres", "-c", "log_statement=all"]  # Comment to disable SQL logs. all: all queries, ddl: DDL only, mod: DDL and modifying statements
+
+  django-coleman-mtasks-viewer:
+    image: "mrsarm/django-coleman-mtasks-viewer"
+    ports:
+      - "8888:8888"
+    environment:
+      - PORT=8888
+      - DCOLEMAN_ENDPOINT
+      - DCOLEMAN_TASKS_VIEWER_HASH_SALT
+      - DCOLEMAN_MASTER_TOKEN
+    depends_on:
+      - django-coleman
+
+  #
+  # **tools** profile, none of these services runs on startup by default,
+  # and all are commands that exit once the task finished
+  #
+
+
+  psql:
+    image: postgres:12
+    command: psql postgres -h postgres -U postgres
+    depends_on:
+      - postgres
+    profiles:
+      - tools
+
+
+  # Provide all the DB resources: DB and DB user creation, DB migrations and admin user creation
+  django-coleman-provision:
+    image: "mrsarm/django-coleman:${TAG:-latest}"
+    environment:
+      - PROCESS_TYPE=provision
+      - POSTGRES_PASSWORD
+      - DATABASE_URL
+      - ADMIN_USERNAME
+      - ADMIN_PASSWORD
+    depends_on:
+      - postgres
+    profiles:
+      - tools
+
+
+  # One by one provision tasks
+  #
+  # Useful in case you only need to run one, e.g. to
+  # create a new administrator user "john", you would
+  # normally run `docker-compose up' first to launch
+  # all the apps, and then in another terminal:
+  # `ADMIN_USERNAME=john ADMIN_PASSWORD=secretpass docker-compose up django-coleman-createadmin'
+
+  django-coleman-createdb:
+    image: "mrsarm/django-coleman:${TAG:-latest}"
+    environment:
+      - PROCESS_TYPE=createdb
+      - POSTGRES_PASSWORD
+      - DATABASE_URL
+    depends_on:
+      - postgres
+    profiles:
+      - tools
+
+  django-coleman-migrate:
+    image: "mrsarm/django-coleman:${TAG:-latest}"
+    environment:
+      - PROCESS_TYPE=migrate
+      - DATABASE_URL
+    depends_on:
+      - postgres
+    profiles:
+      - tools
+
+  django-coleman-createadmin:
+    image: "mrsarm/django-coleman:${TAG:-latest}"
+    environment:
+      - PROCESS_TYPE=createadmin
+      - DATABASE_URL
+      - ADMIN_USERNAME
+      - ADMIN_PASSWORD
+    depends_on:
+      - postgres
+    profiles:
+      - tools
+
+
+  # Run automated tests
+
+  django-coleman-test:
+    image: "mrsarm/django-coleman:${TAG:-latest}"
+    environment:
+      - PROCESS_TYPE=test
+    profiles:
+      - tools

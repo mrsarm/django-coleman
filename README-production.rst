@@ -31,7 +31,7 @@ file for Django Coleman::
 
     server {
         listen      80;
-        server_name coleman;
+        server_name django-coleman;
         access_log  /var/log/nginx/django.access.log;
         error_log   /var/log/nginx/django.error.log;
 
@@ -55,16 +55,16 @@ file for Django Coleman::
     }
 
 With the above configuration, the Admin interface should be accessible
-at http://coleman/admin
+at http://django-coleman/admin
 
 If you can't see the Admin page correctly, and the browser console shows
 you *403 Forbidden* errors, ensure the system user that runs the Nginx server
 has permissions to access to the Django Coleman resources.
 
-Also be sure to have mapped `coleman` in your DNS server, or in the
+Also be sure to have mapped `django-coleman` in your DNS server, or in the
 `/etc/hosts` where you want to access the app::
 
-   echo '127.0.0.1 coleman' | sudo tee -a /etc/hosts
+   echo '127.0.0.1 django-coleman' | sudo tee -a /etc/hosts
 
 
 PostgreSQL database
