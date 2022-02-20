@@ -1,10 +1,9 @@
 from adminfilters.multiselect import UnionFieldListFilter
-from advanced_filters.admin import AdminAdvancedFiltersMixin
 from django.contrib import admin
 from django.db import models
 from django.forms import Textarea
-from django.utils.translation import ugettext_lazy as _
-from .models import Task, Item
+from django.utils.translation import gettext_lazy as _
+from .models import Task, Item, TASK_PRIORITY_FIELDS
 from django_admin_listfilter_dropdown.filters import RelatedDropdownFilter
 
 
@@ -13,7 +12,8 @@ class ItemInline(admin.TabularInline):
     extra = 0
 
 
-class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
+@admin.register(Task)
+class TaskAdmin(admin.ModelAdmin):
     list_display = ('number', 'title', 'user', 'partner', 'created_at', 'deadline', 'priority', 'state')
     list_display_links = ('number', 'title')
     search_fields = ('id', 'title', 'item__item_description',
@@ -21,24 +21,12 @@ class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
                      'partner__name', 'partner__email')
     list_filter = (
         ('user', RelatedDropdownFilter),
-        #('partner', RelatedDropdownFilter),
+        # ('partner', RelatedDropdownFilter),
         ('state', UnionFieldListFilter),
         ('priority', UnionFieldListFilter),
         'deadline'
     )
-    advanced_filter_fields = (
-        'user__username',
-        'partner__name',
-        'state',
-        'priority',
-        'deadline',
-        'created_at',
-        'created_by',
-        'title',
-        'description',
-        'resolution',
-    )
-    ordering = ('-created_at',)
+    ordering = TASK_PRIORITY_FIELDS
     readonly_fields = ('created_at', 'last_modified', 'created_by')
     autocomplete_fields = ['user', 'partner']
 
@@ -67,6 +55,3 @@ class TaskAdmin(AdminAdvancedFiltersMixin, admin.ModelAdmin):
         if change is False:
             obj.created_by = request.user
         super().save_model(request, obj, form, change)
-
-
-admin.site.register(Task, TaskAdmin)

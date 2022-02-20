@@ -1,3 +1,5 @@
+# Files to ignore when building Docker image, basically the same than .gitignore
+
 # Python compiled byte code
 *.pyc
 
@@ -35,6 +37,14 @@ dev.sh
 venv*/
 .venv*/
 
-/.env
+/.env*
 
 /htmlcov
+
+# Files from source that aren't needed in the image
+Dockerfile
+README*
+COPYING
+requirements*.in
+requirements.txt
+__*

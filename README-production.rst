@@ -14,7 +14,7 @@ execute::
 
 Before run the first time, install the dependencies with::
 
-    $ pip install -r requirements-prod.txt
+    $ pip install -r requirements/requirements-prod.txt
 
 The static resources must served with a HTTP server
 like *Nginx* or *Apache HTTP*. To collect all static resources
@@ -31,7 +31,7 @@ file for Django Coleman::
 
     server {
         listen      80;
-        server_name coleman.localhost;
+        server_name django-coleman;
         access_log  /var/log/nginx/django.access.log;
         error_log   /var/log/nginx/django.error.log;
 
@@ -55,11 +55,16 @@ file for Django Coleman::
     }
 
 With the above configuration, the Admin interface should be accessible
-at http://coleman.localhost/admin
+at http://django-coleman/admin
 
 If you can't see the Admin page correctly, and the browser console shows
-you *403 Forbidden* errors, ensure the user that runs the Nginx server
+you *403 Forbidden* errors, ensure the system user that runs the Nginx server
 has permissions to access to the Django Coleman resources.
+
+Also be sure to have mapped `django-coleman` in your DNS server, or in the
+`/etc/hosts` where you want to access the app::
+
+   echo '127.0.0.1 django-coleman' | sudo tee -a /etc/hosts
 
 
 PostgreSQL database
@@ -76,9 +81,24 @@ password ``postgres``, first create the user with::
     $ sudo -u postgres createuser --createdb --no-superuser --no-createrole --pwprompt dcoleman
 
 If you are already logged-in as a superuser, you can execute instead the following, within the SQL session:
-``CREATE USER dcoleman``.
+``CREATE USER dcoleman;``, and then to be prompted for a password within a ``psql`` session
+execute ``\password dcoleman``.
 
 Then create the database with::
 
     $ sudo -u postgres psql
     postgres=# CREATE DATABASE dcoleman_dev OWNER dcoleman;
+
+Another way to create user and database in Postgres is to use
+the Procfile task ``createdb``, checkout the section below.
+
+
+Docker and Procfile
+-------------------
+
+**Docker**: 🚧 to implement ...
+
+**Procfile**: provided in the source code, the ``web``
+task allows to launch the webserver, checkout the `<.env.example>`_
+file and the `<README.rst>`_ guides of how to use
+it with *Honcho*.

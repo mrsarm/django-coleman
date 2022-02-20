@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-04-29 20:03-0300\n"
+"POT-Creation-Date: 2022-02-13 19:12-0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Mariano Ruiz <mrsarm@gmail.com>\n"
 "Language: es\n"
@@ -16,114 +16,118 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: mtasks/admin.py:48
+#: admin.py:49
 msgid "More..."
 msgstr "Mas información..."
 
-#: mtasks/apps.py:7
+#: apps.py:7
 msgid " Task Management"
 msgstr " Gestión de Tareas"
 
-#: mtasks/models.py:11
+#: models.py:15
 msgid "number"
 msgstr "número"
 
-#: mtasks/models.py:16
+#: models.py:57
 msgid "Task"
 msgstr "Tarea"
 
-#: mtasks/models.py:17
+#: models.py:58
 msgid "Tasks"
 msgstr "Tareas"
 
-#: mtasks/models.py:20
+#: models.py:61
 msgid "To Do"
 msgstr "Para Hacer"
 
-#: mtasks/models.py:21
+#: models.py:62
 msgid "In Progress"
 msgstr "En Progreso"
 
-#: mtasks/models.py:22
+#: models.py:63
 msgid "Blocked"
 msgstr "Bloqueado"
 
-#: mtasks/models.py:23
+#: models.py:64
 msgid "Done"
 msgstr "Hecho"
 
-#: mtasks/models.py:24
+#: models.py:65
 msgid "Dismissed"
 msgstr "Desestimado"
 
-#: mtasks/models.py:28
+#: models.py:69
 msgid "Low"
 msgstr "Baja"
 
-#: mtasks/models.py:29
+#: models.py:70
 msgid "Normal"
 msgstr "Normal"
 
-#: mtasks/models.py:30
+#: models.py:71
 msgid "High"
 msgstr "Alta"
 
-#: mtasks/models.py:31
+#: models.py:72
 msgid "Critical"
 msgstr "Crítica"
 
-#: mtasks/models.py:32
-msgid "Blocker"
-msgstr "Bloqueada"
-
-#: mtasks/models.py:35
+#: models.py:75
 msgid "title"
 msgstr "título"
 
-#: mtasks/models.py:37 mtasks/models.py:112
+#: models.py:77 models.py:197
 msgid "description"
 msgstr "descripción"
 
-#: mtasks/models.py:38
+#: models.py:78
 msgid "resolution"
 msgstr "resolución"
 
-#: mtasks/models.py:39
+#: models.py:79
 msgid "deadline"
 msgstr "fecha límite"
 
-#: mtasks/models.py:40
+#: models.py:80
 msgid "assigned to"
 msgstr "asignado a"
 
-#: mtasks/models.py:42
+#: models.py:82
 msgid "state"
 msgstr "estado"
 
-#: mtasks/models.py:43
+#: models.py:83
 msgid "priority"
 msgstr "prioridad"
 
-#: mtasks/models.py:44
+#: models.py:84
 msgid "created by"
 msgstr "creado por"
 
-#: mtasks/models.py:46
+#: models.py:86
 msgid "created at"
 msgstr "creado en"
 
-#: mtasks/models.py:47
+#: models.py:87
 msgid "last modified"
 msgstr "última vez modificado"
 
-#: mtasks/models.py:108
+#: models.py:123
+msgid "Open task with this title and partner already exists."
+msgstr "Una tarea abierta con mismo título y partner ya existe."
+
+#: models.py:129
+msgid "Open task with this title and no partner already exists."
+msgstr "Una tarea abierta con mismo título y partner ya existe."
+
+#: models.py:193
 msgid "Item"
 msgstr "Item"
 
-#: mtasks/models.py:109
+#: models.py:194
 msgid "Check List"
 msgstr "Check List"
 
-#: mtasks/models.py:113
+#: models.py:198
 msgid "done?"
 msgstr "¿listo?"
