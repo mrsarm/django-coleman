@@ -3,8 +3,6 @@
 # Get the tag
 if [ "$#" -gt 0 ] ; then
     export TAG="$1"
-#elif [ -n "$GITHUB_REF" ]; then
-#    export TAG=${GITHUB_REF##*/}
 else
     export TAG="latest"
 fi

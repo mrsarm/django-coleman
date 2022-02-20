@@ -46,4 +46,5 @@ Dockerfile
 README*
 COPYING
 requirements*.in
+requirements.txt
 __*
