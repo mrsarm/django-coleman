@@ -26,8 +26,8 @@ Features
   `Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_
   to allows users to follow the orders.
 * Pytest with some tests as example and code coverage reports configured.
-* Docker and Docker Compose configurations (publishing the image in
-  Docker Hub *in progress*).
+* Docker and Docker Compose configurations (images published in
+  `Docker Hub <https://hub.docker.com/repository/docker/mrsarm/django-coleman>`_).
 * Ready to use "production" configurations as reference.
 
 .. image:: docs/source/_static/img/django-coleman.png
@@ -36,6 +36,8 @@ Features
 
 Requirements
 ------------
+
+Docker, or:
 
 * Python 3.6+ (tested with Python 3.6 and 3.10).
 * Django 3.2 LTS and other dependencies declared in
@@ -47,7 +49,9 @@ Requirements
 Install and Run
 ---------------
 
-*(Optional)* Create a virtual environment and activate it with::
+Using Docker, check the section below. Otherwise:
+
+Create a virtual environment and activate it with *(Optional)*::
 
     $ python3 -m venv .venv && source .venv/bin/activate
 
@@ -110,13 +114,25 @@ with password "admin1234"::
 Docker
 ------
 
-A reference `<Dockerfile>`_ is provided, that's is going to be published
-in Docker Hub *(in progress)*.
+A reference `<Dockerfile>`_ is provided, and the image published
+in [Docker Hub](https://hub.docker.com/repository/docker/mrsarm/django-coleman).
 
-Also a `<docker-compose.yml>`_ is provided, you can run all from here,
-Django Coleman, the viewer app and Postgres::
+Also `<docker-compose.yml>`_ and `<.env.example>`_ files are provided, you can run
+all from here, Django Coleman, the viewer app and Postgres.
+
+First, copy the ``.env.example`` file as ``.env`` file, and edit whatever
+value you want to::
+
+    $ cp .env.example .env
+
+Then if you already built the image, or you want compose to take
+care of download it from the Docker Hub registry and the run all::
 
     $ docker-compose up
+
+If you want to build the image from the source code, before run execute::
+
+    $ docker-compose build
 
 The first time it runs some errors about the DB are shown, that's because
 you need to create the DB and the structure (tables, indexes), all can
@@ -131,21 +147,28 @@ containers: ``docker-compose run psql``.
 
 By default a local volume ``django-coleman_data`` is attached
 to the Postgres container so even executing ``docker-compose down``
-won't delete the data, but if you want to start from scratch:
+won't delete the data, but if you want to start from scratch::
 
     $ docker-compose down
     $ docker volume rm pg-coleman_data
 
+The URL to access the app is the same than running it with
+Python locally: http://localhost:8000/admin/ .
+
+Once created an order, if the id is ``1``, it can be viewed
+by the viewer with http://localhost:8888/1?t=porgs .
+
 Add changes in the code
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-When adding changes in the code, the image needs to be rebuild::
+When adding changes in the code, the image needs to be updated::
 
     $ docker-compose build
 
 Then run again. A script ``docker-build.sh`` with more advance
 features and without using docker-compose is also provided
 to re-build the image.
+
 
 Settings
 --------
