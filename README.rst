@@ -115,7 +115,7 @@ Docker
 ------
 
 A reference `<Dockerfile>`_ is provided, and the image published
-in [Docker Hub](https://hub.docker.com/repository/docker/mrsarm/django-coleman).
+in `Docker Hub <https://hub.docker.com/r/mrsarm/django-coleman>`_.
 
 Also `<docker-compose.yml>`_ and `<.env.example>`_ files are provided, you can run
 all from here, Django Coleman, the viewer app and Postgres.
