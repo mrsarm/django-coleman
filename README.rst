@@ -27,7 +27,7 @@ Features
   to allows users to follow the orders.
 * Pytest with some tests as example and code coverage reports configured.
 * Docker and Docker Compose configurations (images published in
-  `Docker Hub <https://hub.docker.com/repository/docker/mrsarm/django-coleman>`_).
+  `Docker Hub <https://hub.docker.com/r/mrsarm/django-coleman>`_).
 * Ready to use "production" configurations as reference.
 
 .. image:: docs/source/_static/img/django-coleman.png
