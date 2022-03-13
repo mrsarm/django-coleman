@@ -21,7 +21,7 @@ Features
 * Send emails when a task is created.
 * Spanish translations.
 * Basic Rest API configuration (disabled by default, check the
-  ``INSTALLED_APPS`` setting)
+  ``INSTALLED_APPS`` setting).
 * Optionally, you can use Django Coleman along with
   `Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_
   to allows users to follow the orders.
@@ -131,7 +131,7 @@ build the images from the source code, execute::
 
     $ docker-compose build
 
-To get the images from Docker Hub, execute::
+Or to get the images from Docker Hub, execute::
 
     $ docker-compose pull
 
@@ -148,8 +148,20 @@ be created in another terminal executing::
 
 Even a user ``admin`` with password ``admin1234`` is created.
 
+Access the apps and the DB
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The URL to access the app is the same than running it with
+Python locally: http://localhost:8000/admin/ .
+
+Once created an order, if the id is ``1``, it can be viewed
+by the viewer with http://localhost:8888/1?t=porgs .
+
 If you want to then open a `psql` session for the DB from the
 containers: ``docker-compose run psql``.
+
+Local persistence
+^^^^^^^^^^^^^^^^^
 
 By default a local volume ``django-coleman_data`` is attached
 to the Postgres container so even executing ``docker-compose down``
@@ -157,12 +169,6 @@ won't delete the data, but if you want to start from scratch::
 
     $ docker-compose down
     $ docker volume rm pg-coleman_data
-
-The URL to access the app is the same than running it with
-Python locally: http://localhost:8000/admin/ .
-
-Once created an order, if the id is ``1``, it can be viewed
-by the viewer with http://localhost:8888/1?t=porgs .
 
 Add changes in the code
 ^^^^^^^^^^^^^^^^^^^^^^^
