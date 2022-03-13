@@ -125,14 +125,20 @@ value you want to::
 
     $ cp .env.example .env
 
-Then if you already built the image, or you want compose to take
-care of download it from the Docker Hub registry and the run all::
-
-    $ docker-compose up
-
-If you want to build the image from the source code, before run execute::
+Then before run for the first time the containers, you have to either
+download the images from Docker Hub or build them from the source code. To
+build the images from the source code, execute::
 
     $ docker-compose build
+
+To get the images from Docker Hub, execute::
+
+    $ docker-compose pull
+
+Once the images are installed in your local machine, create the containers
+and run all of them with::
+
+    $ docker-compose up
 
 The first time it runs some errors about the DB are shown, that's because
 you need to create the DB and the structure (tables, indexes), all can
