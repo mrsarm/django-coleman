@@ -4,7 +4,7 @@
 #
 #    pip-compile --no-emit-index-url --output-file=requirements-prod.txt requirements-prod.in
 #
-psycopg2-binary==2.9.2
+psycopg2-binary==2.9.3
     # via -r requirements-prod.in
 uwsgi==2.0.20
     # via -r requirements-prod.in
