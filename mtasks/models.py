@@ -56,6 +56,9 @@ class Task(models.Model):
     class Meta:
         verbose_name = _("Task")
         verbose_name_plural = _("Tasks")
+        indexes = [
+            models.Index(fields=TASK_PRIORITY_FIELDS, name='mtasks_task_priority_idx'),
+        ]
 
     STATES = (
         (State.TO_DO.value, _('To Do')),
@@ -87,11 +90,6 @@ class Task(models.Model):
     last_modified = models.DateTimeField(_("last modified"), auto_now=True, editable=False)
 
     objects = TaskManager()
-
-    class Meta:
-        indexes = [
-            models.Index(fields=TASK_PRIORITY_FIELDS, name='mtasks_task_priority_idx'),
-        ]
 
     def __str__(self):
         return "[%s] %s" % (self.number, self.title)
