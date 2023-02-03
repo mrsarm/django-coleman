@@ -8,7 +8,7 @@ asgiref==3.5.0
     # via django
 dj-database-url==1.2.0
     # via -r requirements-dev.in
-django==3.2.16
+django==3.2.17
     # via
     #   -r requirements-dev.in
     #   dj-database-url
