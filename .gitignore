@@ -38,3 +38,4 @@ venv*/
 /.env
 
 /htmlcov
+/.coverage
