@@ -64,7 +64,7 @@ Create the database with::
 
     $ python3 manage.py migrate
 
-You should run first the ``makemigrations`` task if changes in the model were made.
+You should run first the ``makemigrations`` task if changes in the models were made.
 
 To create an admin user::
 
