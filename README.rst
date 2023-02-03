@@ -39,7 +39,7 @@ Requirements
 
 Docker, or:
 
-* Python 3.6+ (tested with Python 3.6 and 3.10).
+* Python 3.8+ (tested with Python 3.8, and 3.10).
 * Django 3.2 LTS and other dependencies declared in
   the ``requirements.txt`` file (use virtual environments or containers!).
 * A Django compatible database like PostgreSQL (by default uses
@@ -62,9 +62,9 @@ Install dependencies with::
 
 Create the database with::
 
-    $ python3 manage.py makemigrations
-    $ python3 manage.py makemigrations partner mtasks
     $ python3 manage.py migrate
+
+You should run first the ``makemigrations`` task if changes in the model were made.
 
 To create an admin user::
 
