@@ -271,7 +271,8 @@ execute the following to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``master`` branch works with Django 3.2 LTS. The are a few more branches (though unmaintained):
+The ``master`` branch works with Django 3.2 LTS, but you can use the same codebase
+with Django 4.x as well. The are a few more branches (though unmaintained):
 
 * ``django/2.2``
 * ``django/2.0``

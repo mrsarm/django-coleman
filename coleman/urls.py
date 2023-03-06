@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.urls import re_path, include
 from django.contrib import admin
 from django.urls import path
 from django.conf import settings
@@ -28,12 +28,12 @@ router.register(r'tasks', TaskViewSet)
 
 
 urlpatterns = [
-    url(r'^api/v1/', include(router.urls)),
+    re_path('^api/v1/', include(router.urls)),
 ]
 
 if settings.ADMIN:
     urlpatterns = [
-        url(r'^$', lambda r: HttpResponseRedirect('admin/')),   # Remove this redirect if you add custom views
+        re_path(r'^$', lambda r: HttpResponseRedirect('admin/')),   # Remove this redirect if you add custom views
         path('admin/', admin.site.urls),
     ] + urlpatterns
 
