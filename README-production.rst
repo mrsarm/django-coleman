@@ -10,7 +10,7 @@ with a Postgres database named ``dcoleman_dev``
 (or other specified in the environment variable ``DATABASE_URL``),
 execute::
 
-    $ ./run prod
+    $ uwsgi uwsgi.ini
 
 Before run the first time, install the dependencies with::
 
@@ -96,7 +96,7 @@ the Procfile task ``createdb``, checkout the section below.
 Docker and Procfile
 -------------------
 
-**Docker**: 🚧 to implement ...
+**Docker**: check out the "Docker" section in the `<README.rst>`_ file.
 
 **Procfile**: provided in the source code, the ``web``
 task allows to launch the webserver, checkout the `<.env.example>`_
