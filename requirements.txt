@@ -1,2 +1,2 @@
--r requirements/requirements-dev.txt
 -r requirements/requirements-test.txt
+-r requirements/requirements-dev.txt

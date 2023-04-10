@@ -39,8 +39,8 @@ Requirements
 
 Docker, or:
 
-* Python 3.8+ (tested with Python 3.8, and 3.10).
-* Django 3.2 LTS and other dependencies declared in
+* Python 3.8+ (tested with Python 3.8 and 3.11).
+* Django 4.2 LTS and other dependencies declared in
   the ``requirements.txt`` file (use virtual environments or containers!).
 * A Django compatible database like PostgreSQL (by default uses
   the Python's built-in SQLite database for development purpose).

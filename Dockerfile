@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 LABEL maintainer="Mariano Ruiz <mrsarm@gmail.com>"
 
 ENV CXXFLAGS="-mtune=intel -Os -pipe" \
@@ -45,8 +45,8 @@ RUN buildDeps=' \
     && pip install --no-cache-dir -U pip \
     && pip3 install --no-cache-dir \
         honcho \
-    && pip3 install --no-cache-dir -r requirements-dev.txt \
     && pip3 install --no-cache-dir -r requirements-test.txt \
+    && pip3 install --no-cache-dir -r requirements-dev.txt \
     && pip3 install --no-cache-dir -r requirements-prod.txt \
     # cleanup
     && apt-get purge --auto-remove -yqq $buildDeps \
