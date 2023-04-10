@@ -298,6 +298,6 @@ About
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017-2022) Mariano Ruiz <mrsarm@gmail.com>
+**Authors**: (2017-2023) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3
