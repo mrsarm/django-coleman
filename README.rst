@@ -117,7 +117,7 @@ Docker
 A reference `<Dockerfile>`_ is provided, and the image published
 in `Docker Hub <https://hub.docker.com/r/mrsarm/django-coleman>`_.
 
-Also `<docker-compose.yml>`_ and `<.env.example>`_ files are provided, you can run
+Also `<compose.yml>`_ and `<.env.example>`_ files are provided, you can run
 all from here, Django Coleman, the viewer app and Postgres.
 
 First, copy the ``.env.example`` file as ``.env`` file, and edit whatever
@@ -129,22 +129,22 @@ Then before run for the first time the containers, you have to either
 download the images from Docker Hub or build them from the source code. To
 build the images from the source code, execute::
 
-    $ docker-compose build
+    $ docker compose build
 
 Or to get the images from Docker Hub, execute::
 
-    $ docker-compose pull
+    $ docker compose pull
 
 Once the images are installed in your local machine, create the containers
 and run all of them with::
 
-    $ docker-compose up
+    $ docker compose up
 
 The first time it runs some errors about the DB are shown, that's because
 you need to create the DB and the structure (tables, indexes), all can
 be created in another terminal executing::
 
-    $ docker-compose run django-coleman-provision
+    $ docker compose run django-coleman-provision
 
 Even a user ``admin`` with password ``admin1234`` is created.
 
@@ -158,16 +158,16 @@ Once created an order, if the id is ``1``, it can be viewed
 by the viewer with http://localhost:8888/1?t=porgs .
 
 If you want to then open a `psql` session for the DB from the
-containers: ``docker-compose run psql``.
+containers: ``docker compose run psql``.
 
 Local persistence
 ^^^^^^^^^^^^^^^^^
 
 By default a local volume ``django-coleman_data`` is attached
-to the Postgres container so even executing ``docker-compose down``
+to the Postgres container so even executing ``docker compose down``
 won't delete the data, but if you want to start from scratch::
 
-    $ docker-compose down
+    $ docker compose down
     $ docker volume rm pg-coleman_data
 
 Add changes in the code
@@ -175,7 +175,7 @@ Add changes in the code
 
 When adding changes in the code, the image needs to be updated::
 
-    $ docker-compose build
+    $ docker compose build
 
 Then run again. A script ``docker-build.sh`` with more advance
 features and without using docker-compose is also provided
