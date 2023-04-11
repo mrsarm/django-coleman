@@ -21,13 +21,13 @@ Features
 * Send emails when a task is created.
 * Spanish translations.
 * Basic Rest API configuration (disabled by default, check the
-  ``INSTALLED_APPS`` setting)
+  ``INSTALLED_APPS`` setting).
 * Optionally, you can use Django Coleman along with
   `Django Coleman Viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_
   to allows users to follow the orders.
 * Pytest with some tests as example and code coverage reports configured.
-* Docker and Docker Compose configurations (publishing the image in
-  Docker Hub *in progress*).
+* Docker and Docker Compose configurations (images published in
+  `Docker Hub <https://hub.docker.com/r/mrsarm/django-coleman>`_).
 * Ready to use "production" configurations as reference.
 
 .. image:: docs/source/_static/img/django-coleman.png
@@ -37,7 +37,9 @@ Features
 Requirements
 ------------
 
-* Python 3.6+ (tested with Python 3.6 and 3.10).
+Docker, or:
+
+* Python 3.8+ (tested with Python 3.8, and 3.10).
 * Django 3.2 LTS and other dependencies declared in
   the ``requirements.txt`` file (use virtual environments or containers!).
 * A Django compatible database like PostgreSQL (by default uses
@@ -47,7 +49,9 @@ Requirements
 Install and Run
 ---------------
 
-*(Optional)* Create a virtual environment and activate it with::
+Using Docker, check the section below. Otherwise:
+
+Create a virtual environment and activate it with *(Optional)*::
 
     $ python3 -m venv .venv && source .venv/bin/activate
 
@@ -58,9 +62,9 @@ Install dependencies with::
 
 Create the database with::
 
-    $ python3 manage.py makemigrations
-    $ python3 manage.py makemigrations partner mtasks
     $ python3 manage.py migrate
+
+You should run first the ``makemigrations`` task if changes in the models were made.
 
 To create an admin user::
 
@@ -110,11 +114,29 @@ with password "admin1234"::
 Docker
 ------
 
-A reference `<Dockerfile>`_ is provided, that's is going to be published
-in Docker Hub *(in progress)*.
+A reference `<Dockerfile>`_ is provided, and the image published
+in `Docker Hub <https://hub.docker.com/r/mrsarm/django-coleman>`_.
 
-Also a `<docker-compose.yml>`_ is provided, you can run all from here,
-Django Coleman, the viewer app and Postgres::
+Also `<docker-compose.yml>`_ and `<.env.example>`_ files are provided, you can run
+all from here, Django Coleman, the viewer app and Postgres.
+
+First, copy the ``.env.example`` file as ``.env`` file, and edit whatever
+value you want to::
+
+    $ cp .env.example .env
+
+Then before run for the first time the containers, you have to either
+download the images from Docker Hub or build them from the source code. To
+build the images from the source code, execute::
+
+    $ docker-compose build
+
+Or to get the images from Docker Hub, execute::
+
+    $ docker-compose pull
+
+Once the images are installed in your local machine, create the containers
+and run all of them with::
 
     $ docker-compose up
 
@@ -126,12 +148,24 @@ be created in another terminal executing::
 
 Even a user ``admin`` with password ``admin1234`` is created.
 
+Access the apps and the DB
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The URL to access the app is the same than running it with
+Python locally: http://localhost:8000/admin/ .
+
+Once created an order, if the id is ``1``, it can be viewed
+by the viewer with http://localhost:8888/1?t=porgs .
+
 If you want to then open a `psql` session for the DB from the
 containers: ``docker-compose run psql``.
 
+Local persistence
+^^^^^^^^^^^^^^^^^
+
 By default a local volume ``django-coleman_data`` is attached
 to the Postgres container so even executing ``docker-compose down``
-won't delete the data, but if you want to start from scratch:
+won't delete the data, but if you want to start from scratch::
 
     $ docker-compose down
     $ docker volume rm pg-coleman_data
@@ -139,13 +173,14 @@ won't delete the data, but if you want to start from scratch:
 Add changes in the code
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-When adding changes in the code, the image needs to be rebuild::
+When adding changes in the code, the image needs to be updated::
 
     $ docker-compose build
 
 Then run again. A script ``docker-build.sh`` with more advance
 features and without using docker-compose is also provided
 to re-build the image.
+
 
 Settings
 --------
@@ -236,7 +271,8 @@ execute the following to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``master`` branch works with Django 3.2 LTS. The are a few more branches (though unmaintained):
+The ``master`` branch works with Django 3.2 LTS, but you can use the same codebase
+with Django 4.x as well. The are a few more branches (though unmaintained):
 
 * ``django/2.2``
 * ``django/2.0``

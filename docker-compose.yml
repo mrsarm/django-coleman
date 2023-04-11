@@ -118,6 +118,7 @@ services:
     environment:
       - PROCESS_TYPE=migrate
       - DATABASE_URL
+      - LOG_LEVEL_DJANGO_DB=INFO
     depends_on:
       - postgres
     profiles:
@@ -130,6 +131,7 @@ services:
       - DATABASE_URL
       - ADMIN_USERNAME
       - ADMIN_PASSWORD
+      - LOG_LEVEL_DJANGO_DB=INFO
     depends_on:
       - postgres
     profiles:
