@@ -271,15 +271,17 @@ execute the following to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``master`` branch works with Django 3.2 LTS, but you can use the same codebase
-with Django 4.x as well. The are a few more branches (though unmaintained):
+The ``master`` branch works with Django 4.2 LTS, and
+the are a few more branches (though unmaintained):
 
+* ``django/3.2``
 * ``django/2.2``
 * ``django/2.0``
 * ``django/1.11``
 
-With the source code that works for each version of Django,
-and maybe tweaking some configurations can works with older versions too.
+Each has the source code that works for each version of Django,
+and maybe tweaking some configurations Django Coleman can works
+with other versions too.
 
 
 Some screenshots
