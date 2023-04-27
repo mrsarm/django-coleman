@@ -1,5 +1,3 @@
-version: '3.7'
-
 volumes:
   data:       # Volume name listed: django-coleman_data
     driver: local
@@ -43,7 +41,7 @@ services:
       - postgres
 
   postgres:
-    image: postgres:14
+    image: postgres:15
     environment:
       - POSTGRES_PASSWORD=postgres
     ports:
@@ -71,7 +69,7 @@ services:
 
 
   psql:
-    image: postgres:12
+    image: postgres:15
     command: psql postgres -h postgres -U postgres
     depends_on:
       - postgres
