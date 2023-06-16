@@ -76,4 +76,7 @@ RUN honcho start collectstatic compilemessages \
 
 USER worker
 
+HEALTHCHECK --interval=20s --timeout=3s \
+  CMD curl -f http://localhost:8000/health/?format=json || exit 1
+
 CMD ["sh", "-c", "exec honcho start --no-prefix $PROCESS_TYPE"]

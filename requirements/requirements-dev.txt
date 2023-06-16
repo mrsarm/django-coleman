@@ -13,12 +13,15 @@ django==4.2.1
     #   -r requirements-dev.in
     #   dj-database-url
     #   django-extensions
+    #   django-health-check
     #   djangorestframework
 django-admin-list-filter-dropdown==1.0.3
     # via -r requirements-dev.in
 django-adminfilters==2.1.0
     # via -r requirements-dev.in
 django-extensions==3.2.1
+    # via -r requirements-dev.in
+django-health-check==3.17.0
     # via -r requirements-dev.in
 djangorestframework==3.14.0
     # via -r requirements-dev.in

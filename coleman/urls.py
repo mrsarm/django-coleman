@@ -35,6 +35,7 @@ if settings.ADMIN:
     urlpatterns = [
         re_path(r'^$', lambda r: HttpResponseRedirect('admin/')),   # Remove this redirect if you add custom views
         path('admin/', admin.site.urls),
+        re_path(r'^health/', include('health_check.urls')),
     ] + urlpatterns
 
 admin.site.site_title = admin.site.site_header = settings.SITE_HEADER

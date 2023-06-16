@@ -168,7 +168,7 @@ to the Postgres container so even executing ``docker compose down``
 won't delete the data, but if you want to start from scratch::
 
     $ docker compose down
-    $ docker volume rm pg-coleman_data
+    $ docker volume rm django-coleman_data
 
 Add changes in the code
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -178,7 +178,7 @@ When adding changes in the code, the image needs to be updated::
     $ docker compose build
 
 Then run again. A script ``docker-build.sh`` with more advance
-features and without using docker-compose is also provided
+features and without using docker compose is also provided
 to re-build the image.
 
 

@@ -5,3 +5,4 @@ django-admin-list-filter-dropdown~=1.0.3
 django-adminfilters~=2.1.0
 djangorestframework~=3.14.0
 django-extensions~=3.2.1
+django-health-check~=3.17.0
