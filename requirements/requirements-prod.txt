@@ -10,5 +10,5 @@ psycopg-binary==3.1.8
     # via psycopg
 typing-extensions==4.5.0
     # via psycopg
-uwsgi==2.0.21
+uwsgi==2.0.22
     # via -r requirements-prod.in
