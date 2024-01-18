@@ -1,3 +1,5 @@
+name: coleman
+
 volumes:
   data:       # Volume name listed: django-coleman_data
     driver: local
