@@ -38,16 +38,23 @@ services:
       - ADMIN_USERNAME
       - ADMIN_PASSWORD
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
 
   postgres:
     image: postgres:15
     environment:
       - POSTGRES_PASSWORD=postgres
+      - PGUSER=postgres
     ports:
       - "5432:5432"
     volumes:
       - data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready"]
+      interval: 1s
+      timeout: 3s
+      retries: 5
     command: ["postgres", "-c", "log_statement=all"]  # Comment to disable SQL logs. all: all queries, ddl: DDL only, mod: DDL and modifying statements
 
   django-coleman-mtasks-viewer:
@@ -87,7 +94,8 @@ services:
       - ADMIN_USERNAME
       - ADMIN_PASSWORD
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     profiles:
       - tools
 
@@ -107,7 +115,8 @@ services:
       - POSTGRES_PASSWORD
       - DATABASE_URL
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     profiles:
       - tools
 
@@ -118,7 +127,8 @@ services:
       - DATABASE_URL
       - LOG_LEVEL_DJANGO_DB=INFO
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     profiles:
       - tools
 
@@ -131,7 +141,8 @@ services:
       - ADMIN_PASSWORD
       - LOG_LEVEL_DJANGO_DB=INFO
     depends_on:
-      - postgres
+      postgres:
+        condition: service_healthy
     profiles:
       - tools
 
