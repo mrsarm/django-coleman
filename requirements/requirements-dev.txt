@@ -33,7 +33,7 @@ python-dotenv==0.19.2
     # via environs
 pytz==2022.1
     # via djangorestframework
-sqlparse==0.4.4
+sqlparse==0.5.0
     # via django
 typing-extensions==4.5.0
     # via dj-database-url
