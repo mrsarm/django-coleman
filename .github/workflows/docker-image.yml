@@ -22,7 +22,8 @@ jobs:
       run: ./docker-build.sh "${GITHUB_REF_SLUG}"
     - name: Run tests
       run: docker run --rm -e PROCESS_TYPE=test --name django-coleman "mrsarm/django-coleman:${GITHUB_REF_SLUG}"
-    - name: Push Docker image
+    - name: Release Docker image
+      if: ${{ github.ref != 'refs/heads/master' }}
       run: docker push "mrsarm/django-coleman:${GITHUB_REF_SLUG}"
     - name: Tag "latest"
       if: ${{ github.ref == 'refs/heads/master' }}
