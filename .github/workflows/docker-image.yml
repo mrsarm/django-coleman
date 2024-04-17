@@ -4,8 +4,8 @@ on: [push]
 
 jobs:
 
-  build:
-    name: Build & Test
+  build-test-release:
+    name: Build, Test and Release
 
     runs-on: ubuntu-latest
 
