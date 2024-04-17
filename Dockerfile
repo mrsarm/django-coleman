@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 LABEL maintainer="Mariano Ruiz <mrsarm@gmail.com>"
 
 ENV CXXFLAGS="-mtune=intel -Os -pipe" \
