@@ -25,6 +25,37 @@ jobs:
     - name: Release Docker image
       if: ${{ github.ref != 'refs/heads/master' }}
       run: docker push "mrsarm/django-coleman:${GITHUB_REF_SLUG}"
+
+    - name: Get GitHub downloader
+      run: wget https://gist.github.com/mrsarm/95279381f3d8bf4269499fb437888e2c/raw/github-file.sh
+    - name: Get compose.yaml
+      env:
+        TOKEN: ${{ secrets.repo_token }}
+      run: bash ./github-file.sh compose.yaml mrsarm/dcoleman-e2e $GITHUB_REF_SLUG main $TOKEN
+    - name: Get .env.example
+      env:
+        TOKEN: ${{ secrets.repo_token }}
+      run: bash ./github-file.sh .env.example mrsarm/dcoleman-e2e $GITHUB_REF_SLUG main $TOKEN
+
+    - name: Setup environment variables
+      run: cp .env.example .env
+    - name: Download pose
+      if: ${{ github.ref != 'refs/heads/master' }}
+      run: wget https://github.com/mrsarm/pose/releases/download/0.4.0-b4/pose-0.4.0-b4-x86_64-unknown-linux-gnu.tar.gz
+    - name: Unpack pose
+      if: ${{ github.ref != 'refs/heads/master' }}
+      run: tar -xvf pose*.tar.gz
+    - name: Build compose file for CI with pose
+      if: ${{ github.ref != 'refs/heads/master' }}
+      run: ./pose --no-docker config --tag "${GITHUB_REF_SLUG}" --tag-filter regex=mrsarm/ --progress -o ci.yaml
+    - name: Create compose file for CI without pose
+      if: ${{ github.ref == 'refs/heads/master' }}
+      run: cp compose.yaml ci.yaml
+    - name: Pull images
+      run: docker compose -f ci.yaml pull
+    - name: Run e2e tests
+      run: docker compose -f ci.yaml run dcoleman-e2e
+
     - name: Tag "latest"
       if: ${{ github.ref == 'refs/heads/master' }}
       run: docker tag "mrsarm/django-coleman:${GITHUB_REF_SLUG}" mrsarm/django-coleman:latest
