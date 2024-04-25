@@ -24,7 +24,7 @@ jobs:
       run: tar -xvf pose*.tar.gz
 
     - name: Define $TAG variable
-      run: ./pose slug $GITHUB_REF_NAME >> $TAG
+      run: echo "TAG=$(./pose slug $GITHUB_REF_NAME)" >> "$GITHUB_ENV"
 
     - name: Build the Docker image
       run: ./docker-build.sh $TAG
