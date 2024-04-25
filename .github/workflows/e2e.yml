@@ -25,7 +25,8 @@ jobs:
 
     - name: Define $TAG variable
       run: echo "TAG=$(./pose slug $GITHUB_REF_NAME)" >> "$GITHUB_ENV"
-    - run: echo "Tag is --> $TAG"
+    - name: Print tag and image names
+      run: echo -e "- TAG    -->  $TAG\n- IMAGE  -->  mrsarm/django-coleman:$TAG"
 
     - name: Build the Docker image
       run: ./docker-build.sh $TAG
