@@ -57,7 +57,8 @@ jobs:
       if: ${{ github.ref == 'refs/heads/master' }}
       run: cp compose.yaml ci.yaml
     - name: Pull images
-      run: docker compose -f ci.yaml pull
+      run: docker compose -f ci.yaml pull \
+           && docker compose -f ci.yaml pull dcoleman-e2e   # images with profiles are not pulled by default
     - name: Run e2e tests
       run: docker compose -f ci.yaml run dcoleman-e2e
 
