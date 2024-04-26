@@ -42,14 +42,14 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        ./pose get -H "Authorization: token $GITHUB_TOKEN" \
-             "https://raw.githubusercontent.com/mrsarm/dcoleman-e2e/$TAG/compose.yaml" "$TAG:main"
+        ./pose get -H "Authorization: token $GITHUB_TOKEN"
+        "https://raw.githubusercontent.com/mrsarm/dcoleman-e2e/$TAG/compose.yaml" "$TAG:main"
     - name: Get .env.example
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       run: |
-        ./pose get -H "Authorization: token $GITHUB_TOKEN" \
-             "https://raw.githubusercontent.com/mrsarm/dcoleman-e2e/$TAG/.env.example" "$TAG:main"
+        ./pose get -H "Authorization: token $GITHUB_TOKEN"
+        "https://raw.githubusercontent.com/mrsarm/dcoleman-e2e/$TAG/.env.example" "$TAG:main"
 
     - name: Setup environment variables
       run: cp .env.example .env
@@ -65,7 +65,7 @@ jobs:
 
     - name: Pull images
       run: docker compose -f ci.yaml pull
-           && docker compose -f ci.yaml pull dcoleman-e2e   # images with profiles are not pulled by default
+           && docker compose -f ci.yaml pull dcoleman-e2e   # services with profiles are not pulled by default
 
     - name: Run e2e tests
       run: docker compose -f ci.yaml run dcoleman-e2e
