@@ -18,10 +18,10 @@ jobs:
         username: ${{ vars.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Download pose
-      run: wget https://github.com/mrsarm/pose/releases/download/0.4.0-b5/pose-0.4.0-b5-x86_64-unknown-linux-gnu.tar.gz
-    - name: Unpack pose
-      run: tar -xvf pose*.tar.gz
+    - name: Install pose
+      run: |
+        wget https://github.com/mrsarm/pose/releases/download/0.4.0-b5/pose-0.4.0-b5-x86_64-unknown-linux-gnu.tar.gz -O - \
+          | tar -xvzf
 
     - name: Define $TAG variable
       run: echo "TAG=$(./pose slug $GITHUB_REF_NAME)" >> "$GITHUB_ENV"
