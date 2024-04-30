@@ -28,6 +28,11 @@ Features
 * Pytest with some tests as example and code coverage reports configured.
 * Docker and Docker Compose configurations (images published in
   `Docker Hub <https://hub.docker.com/r/mrsarm/django-coleman>`_).
+* CI environment, and E2E tests written with Playwright:
+  `dcoleman-e2e <https://github.com/mrsarm/dcoleman-e2e>`_. CI is executed with
+  GitHub Actions, and executed on each push in this project,
+  the viewer repo, or the E2E repo itself. The task also releases the image
+  in the Docker Registry.
 * Ready to use "production" configurations as reference.
 
 .. image:: docs/source/_static/img/django-coleman.png
@@ -117,21 +122,23 @@ Docker
 A reference `<Dockerfile>`_ is provided, and the image published
 in `Docker Hub <https://hub.docker.com/r/mrsarm/django-coleman>`_.
 
-Also `<compose.yml>`_ and `<.env.example>`_ files are provided, you can run
-all from here, Django Coleman, the viewer app and Postgres.
+Also ``compose.yaml`` and ``.env.example`` files are provided in the
+`dcoleman-e2e <https://github.com/mrsarm/dcoleman-e2e>`_ project, you
+can run all from there, Django Coleman, the viewer app and Postgres,
+and the E2E tests.
 
-First, copy the ``.env.example`` file as ``.env`` file, and edit whatever
-value you want to::
+First, copy the ``.env.example`` file as ``.env`` files from the E2E repo,
+and edit whatever value you want to::
 
-    $ cp .env.example .env
+    $ cp ../dcoleman-e2e/.env.example .env
 
 Then before run for the first time the containers, you have to either
 download the images from Docker Hub or build them from the source code. To
 build the images from the source code, execute::
 
-    $ docker compose build
+    $ ./docker-build.sh
 
-Or to get the images from Docker Hub, execute::
+Or to get the images from Docker Hub, execute from the dcoleman-e2e repo::
 
     $ docker compose pull
 
@@ -300,6 +307,6 @@ About
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017-2023) Mariano Ruiz <mrsarm@gmail.com>
+**Authors**: (2017-2024) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3

@@ -39,3 +39,5 @@ venv*/
 
 /htmlcov
 /.coverage
+
+ci*.yaml
