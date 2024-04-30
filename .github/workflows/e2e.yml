@@ -54,7 +54,6 @@ jobs:
       run: cp .env.example .env
 
     - name: Build compose file for CI
-      if: ${{ github.ref != 'refs/heads/master' }}
       run: |
         ./pose --no-docker config --tag $TAG --tag-filter regex=mrsarm/ --progress -o ci.yaml
 
