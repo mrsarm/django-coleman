@@ -14,6 +14,7 @@ jobs:
 
     - name: Login to Docker Hub
       uses: docker/login-action@v3
+      if: ${{ secrets.DOCKERHUB_TOKEN }}
       with:
         username: ${{ vars.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -37,6 +38,7 @@ jobs:
       run: docker run --rm -e PROCESS_TYPE=test --name django-coleman "mrsarm/django-coleman:$TAG"
 
     - name: Release Docker image
+      if: ${{ secrets.DOCKERHUB_TOKEN }}
       run: docker push "mrsarm/django-coleman:$TAG"
 
     - name: Get compose.yaml
@@ -67,8 +69,8 @@ jobs:
       run: docker compose -f ci.yaml run dcoleman-e2e
 
     - name: Tag "latest"
-      if: ${{ github.ref == 'refs/heads/master' }}
+      if: ${{ secrets.DOCKERHUB_TOKEN && github.ref == 'refs/heads/master' }}
       run: docker tag "mrsarm/django-coleman:$TAG" mrsarm/django-coleman:latest
     - name: Release "latest"
-      if: ${{ github.ref == 'refs/heads/master' }}
+      if: ${{ secrets.DOCKERHUB_TOKEN && github.ref == 'refs/heads/master' }}
       run: docker push mrsarm/django-coleman:latest
