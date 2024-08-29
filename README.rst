@@ -15,7 +15,8 @@ Features
   partner (customer, provider...), description, responsible of the task, priority...
 * Each task may have items: sub-tasks to be done.
 * The built-in Django *Authentication and Authorization* system
-  to manage users and groups, login, etc.
+  to manage users and groups, login, etc, and optionally SSO with Google
+  within the Admin (`django-google-sso <https://github.com/megalus/django-google-sso>`_).
 * Module `django-adminfilters <https://github.com/mrsarm/django-adminfilters>`_
   that allows multiselection searches.
 * Send emails when a task is created.
