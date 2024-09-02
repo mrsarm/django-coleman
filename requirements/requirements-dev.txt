@@ -26,7 +26,7 @@ django-admin-list-filter-dropdown==1.0.3
     # via -r requirements-dev.in
 django-adminfilters==2.1.0
     # via -r requirements-dev.in
-django-extensions==3.2.1
+django-extensions==3.2.3
     # via -r requirements-dev.in
 django-google-sso==6.5.0
     # via -r requirements-dev.in
