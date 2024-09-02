@@ -34,7 +34,7 @@ django-health-check==3.18.3
     # via -r requirements-dev.in
 djangorestframework==3.15.2
     # via -r requirements-dev.in
-environs==9.5.0
+environs==11.0.0
     # via -r requirements-dev.in
 google-auth==2.34.0
     # via
@@ -51,7 +51,7 @@ idna==3.8
     # via requests
 loguru==0.7.2
     # via django-google-sso
-marshmallow==3.14.1
+marshmallow==3.22.0
     # via environs
 oauthlib==3.2.2
     # via requests-oauthlib
