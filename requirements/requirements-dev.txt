@@ -24,7 +24,7 @@ django==4.2.15
     #   djangorestframework
 django-admin-list-filter-dropdown==1.0.3
     # via -r requirements-dev.in
-django-adminfilters==2.1.0
+django-adminfilters==2.4.3
     # via -r requirements-dev.in
 django-extensions==3.2.3
     # via -r requirements-dev.in
@@ -55,6 +55,8 @@ marshmallow==3.22.0
     # via environs
 oauthlib==3.2.2
     # via requests-oauthlib
+packaging==24.1
+    # via marshmallow
 pyasn1==0.6.0
     # via
     #   pyasn1-modules
