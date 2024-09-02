@@ -176,6 +176,8 @@ REST_FRAMEWORK = {
     ]
 }
 
+SESSION_COOKIE_AGE = 8 * 60 * 60
+
 
 # Google SSO (django-google-sso)
 GOOGLE_SSO_ENABLED = env.bool('GOOGLE_SSO_ENABLED', False)
