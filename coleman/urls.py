@@ -29,18 +29,22 @@ router.register(r'tasks', TaskViewSet)
 urlpatterns = [
     re_path('^api/v1/', include(router.urls)),
     re_path(r'^health/', include('health_check.urls')),
-    path(
-            "google_sso/", include(
-                "django_google_sso.urls",
-                namespace="django_google_sso"
-            )
-        ),
 ]
 
 if settings.ADMIN:
     urlpatterns = [
         re_path(r'^$', lambda r: HttpResponseRedirect('admin/')),   # Remove this redirect if you add custom views
         path('admin/', admin.site.urls),
+    ] + urlpatterns
+
+if settings.GOOGLE_SSO_ENABLED:
+    urlpatterns = [
+        path(
+            "google_sso/", include(
+                "django_google_sso.urls",
+                namespace="django_google_sso"
+            )
+        ),
     ] + urlpatterns
 
 admin.site.site_title = admin.site.site_header = settings.SITE_HEADER
