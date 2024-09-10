@@ -15,7 +15,8 @@ Features
   partner (customer, provider...), description, responsible of the task, priority...
 * Each task may have items: sub-tasks to be done.
 * The built-in Django *Authentication and Authorization* system
-  to manage users and groups, login, etc.
+  to manage users and groups, login, etc, and optionally SSO with Google
+  within the Admin (`django-google-sso <https://github.com/megalus/django-google-sso>`_).
 * Module `django-adminfilters <https://github.com/mrsarm/django-adminfilters>`_
   that allows multiselection searches.
 * Send emails when a task is created.
@@ -44,7 +45,7 @@ Requirements
 
 Docker, or:
 
-* Python 3.8+ (tested with Python 3.8 and 3.11).
+* Python 3.10+ (tested with 3.11).
 * Django 4.2 LTS and other dependencies declared in
   the ``requirements.txt`` file (use virtual environments or containers!).
 * A Django compatible database like PostgreSQL (by default uses
@@ -124,8 +125,9 @@ in `Docker Hub <https://hub.docker.com/r/mrsarm/django-coleman>`_.
 
 Also ``compose.yaml`` and ``.env.example`` files are provided in the
 `dcoleman-e2e <https://github.com/mrsarm/dcoleman-e2e>`_ project, you
-can run all from there, Django Coleman, the viewer app and Postgres,
-and the E2E tests.
+can run all from there, Django Coleman, the
+`viewer <https://github.com/mrsarm/tornado-dcoleman-mtasks-viewer>`_ app
+and Postgres, and the E2E tests.
 
 First, copy the ``.env.example`` file as ``.env`` files from the E2E repo,
 and edit whatever value you want to::
@@ -199,10 +201,11 @@ set *debug* options to false::
     $ DEBUG=False LANGUAGE_CODE=es-ar python3 manage.py runserver
 
 Also in development environments an ``.env`` file can be used to setup
-the environment variables easily, checkout the `<.env.example>`_ as example.
+the environment variables easily, checkout the
+`.env.example <https://github.com/mrsarm/dcoleman-e2e/blob/main/.env.example>`_ as example.
 You can copy the example file and edit the variables you want to change::
 
-   $ cp .env.example .env
+   $ cp ../dcoleman-e2e/.env.example .env
    $ vi .env
 
 Some available settings:

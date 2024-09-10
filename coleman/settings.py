@@ -176,6 +176,21 @@ REST_FRAMEWORK = {
     ]
 }
 
+SESSION_COOKIE_AGE = 8 * 60 * 60
+
+
+# Google SSO (django-google-sso)
+GOOGLE_SSO_ENABLED = env.bool('GOOGLE_SSO_ENABLED', False)
+if GOOGLE_SSO_ENABLED:
+    SSO_SHOW_FORM_ON_ADMIN_PAGE = env.bool('SSO_SHOW_FORM_ON_ADMIN_PAGE', True)
+    GOOGLE_SSO_CLIENT_ID = env.str("GOOGLE_SSO_CLIENT_ID", None)
+    GOOGLE_SSO_CLIENT_SECRET = env.str('GOOGLE_SSO_CLIENT_SECRET', None)
+    GOOGLE_SSO_PROJECT_ID = env.str('GOOGLE_SSO_PROJECT_ID', "django-coleman")
+    GOOGLE_SSO_AUTO_CREATE_USERS = True
+    GOOGLE_SSO_STAFF_LIST = ["*"]
+    GOOGLE_SSO_ALLOWABLE_DOMAINS = env.str('GOOGLE_SSO_ALLOWABLE_DOMAINS', "gmail.com").split(',')
+    INSTALLED_APPS += ['django_google_sso']
+
 
 #
 # Custom configurations
