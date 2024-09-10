@@ -64,6 +64,8 @@ class Migration(migrations.Migration):
     """
 
     dependencies = [
+        ('contenttypes', '__latest__'),
+        ('auth', '__latest__'),
         ('mtasks', '0002_alter_task_options'),
     ]
 

@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.11-slim-bookworm
 LABEL maintainer="Mariano Ruiz <mrsarm@gmail.com>"
 
 ENV CXXFLAGS="-mtune=intel -Os -pipe" \
@@ -75,5 +75,8 @@ RUN honcho start collectstatic compilemessages \
     && chown worker -R *
 
 USER worker
+
+HEALTHCHECK --interval=20s --timeout=3s \
+  CMD curl -f http://localhost:8000/health/?format=json || exit 1
 
 CMD ["sh", "-c", "exec honcho start --no-prefix $PROCESS_TYPE"]

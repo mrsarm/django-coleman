@@ -4,11 +4,11 @@
 #
 #    pip-compile --no-emit-index-url --output-file=requirements-prod.txt requirements-prod.in
 #
-psycopg[binary]==3.1.8
+psycopg[binary]==3.2.1
     # via -r requirements-prod.in
-psycopg-binary==3.1.8
+psycopg-binary==3.2.1
     # via psycopg
 typing-extensions==4.5.0
     # via psycopg
-uwsgi==2.0.21
+uwsgi==2.0.26
     # via -r requirements-prod.in
