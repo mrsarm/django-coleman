@@ -5,7 +5,7 @@ on: [push]
 jobs:
 
   build-test-release:
-    name: Build, Test and Release
+    name: Build, Test & Release
 
     runs-on: ubuntu-latest
 
@@ -34,7 +34,7 @@ jobs:
         echo "- IMAGE  -->  mrsarm/django-coleman:$TAG"
 
     - name: Build the Docker image
-      run: ./docker-build.sh $TAG
+      run: ./docker-build.sh "$TAG"
 
     - name: Run tests
       run: docker run --rm -e PROCESS_TYPE=test --name django-coleman "mrsarm/django-coleman:$TAG"
@@ -66,7 +66,7 @@ jobs:
         ./pose --no-docker config --tag $TAG --tag-filter regex=mrsarm/ --progress -o ci.yaml
 
     - name: Pull images
-      run: docker compose -f ci.yaml pull
+      run: docker compose -f ci.yaml pull --ignore-pull-failures
            && docker compose -f ci.yaml pull dcoleman-e2e   # services with profiles are not pulled by default
 
     - name: Run e2e tests
