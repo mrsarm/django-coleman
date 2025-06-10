@@ -67,7 +67,7 @@ pyparsing==3.1.4
     # via httplib2
 python-dotenv==0.19.2
     # via environs
-requests==2.32.3
+requests==2.32.4
     # via requests-oauthlib
 requests-oauthlib==2.0.0
     # via google-auth-oauthlib
