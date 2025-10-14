@@ -23,7 +23,7 @@ jobs:
 
     - name: Install pose
       run: |
-        wget https://github.com/mrsarm/pose/releases/download/v0.5.0-b1/pose-v0.5.0-b1-x86_64-unknown-linux-gnu.tar.gz -O - \
+        wget https://github.com/mrsarm/pose/releases/download/0.5.0/pose-0.5.0-x86_64-unknown-linux-gnu.tar.gz -O - \
         | tar -xz
 
     - name: Define $TAG variable
