@@ -1,6 +1,6 @@
 Django~=4.2
 environs~=11.0.0
-dj-database-url~=2.2.0
+dj-database-url~=3.0
 django-admin-list-filter-dropdown~=1.0.3
 django-adminfilters~=2.4.3
 djangorestframework~=3.15.2
