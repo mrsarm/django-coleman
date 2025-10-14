@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v5
 
     - name: Login to Docker Hub
       uses: docker/login-action@v3
@@ -23,7 +23,7 @@ jobs:
 
     - name: Install pose
       run: |
-        wget https://github.com/mrsarm/pose/releases/download/0.4.0/pose-0.4.0-x86_64-unknown-linux-gnu.tar.gz -O - \
+        wget https://github.com/mrsarm/pose/releases/download/v0.5.0-b1/pose-v0.5.0-b1-x86_64-unknown-linux-gnu.tar.gz -O - \
         | tar -xz
 
     - name: Define $TAG variable
