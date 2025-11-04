@@ -45,8 +45,8 @@ Requirements
 
 Docker, or:
 
-* Python 3.10+ (tested with 3.11 and 3.12).
-* Django 4.2 LTS and other dependencies declared in
+* Python 3.12+.
+* Django 5.2 LTS and other dependencies declared in
   the ``requirements.txt`` file (use virtual environments or containers!).
 * A Django compatible database like PostgreSQL (by default uses
   the Python's built-in SQLite database for development purpose).
@@ -281,9 +281,10 @@ execute the following to compile the locales::
 Oldest Django versions
 ^^^^^^^^^^^^^^^^^^^^^^
 
-The ``master`` branch works with Django 4.2 LTS, and
+The ``master`` branch works with Django 5.2 LTS, and
 the are a few more branches (though unmaintained):
 
+* ``django/4.2``
 * ``django/3.2``
 * ``django/2.2``
 * ``django/2.0``
@@ -310,6 +311,6 @@ About
 
 **Project**: https://github.com/mrsarm/django-coleman
 
-**Authors**: (2017-2024) Mariano Ruiz <mrsarm@gmail.com>
+**Authors**: (2017-2025) Mariano Ruiz <mrsarm@gmail.com>
 
 **License**: AGPL-v3
