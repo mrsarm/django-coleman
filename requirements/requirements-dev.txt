@@ -10,7 +10,7 @@ charset-normalizer==3.4.4
     # via requests
 dj-database-url==3.0.1
     # via -r requirements-dev.in
-django==5.2.7
+django==5.2.8
     # via
     #   -r requirements-dev.in
     #   dj-database-url
