@@ -1,4 +1,4 @@
-FROM python:3.12-slim-bookworm
+FROM python:3.12-slim-trixie
 LABEL maintainer="Mariano Ruiz <mrsarm@gmail.com>"
 
 ENV CXXFLAGS="-mtune=intel -Os -pipe" \
@@ -20,7 +20,7 @@ RUN buildDeps=' \
         libuv1-dev \
         libpq-dev \
         libevent-dev \
-        libpcre3-dev \
+        libpcre2-dev \
         zlib1g-dev \
         libbz2-dev \
         libxml2-dev \
@@ -31,7 +31,7 @@ RUN buildDeps=' \
         postgresql-client \
         libpq5 \
         libuv1 \
-        libpcre3 \
+        libpcre2-8-0 \
         zlib1g \
         libbz2-1.0 \
         libxml2 \
