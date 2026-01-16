@@ -59,7 +59,7 @@ marshmallow==4.1.2
     # via environs
 oauthlib==3.3.1
     # via requests-oauthlib
-pyasn1==0.6.1
+pyasn1==0.6.2
     # via
     #   pyasn1-modules
     #   rsa
