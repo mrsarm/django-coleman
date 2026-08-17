@@ -75,7 +75,7 @@ requests-oauthlib==2.0.0
     # via google-auth-oauthlib
 rsa==4.9.1
     # via google-auth
-sqlparse==0.5.5
+sqlparse==0.6.0
     # via django
 types-pyyaml==6.0.12.20250915
     # via django-stubs
