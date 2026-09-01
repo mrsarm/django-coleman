@@ -36,7 +36,7 @@ django-stubs-ext==5.2.8
     # via
     #   django-adminfilters
     #   django-stubs
-djangorestframework==3.16.1
+djangorestframework==3.17.2
     # via -r requirements-dev.in
 environs==14.5.0
     # via -r requirements-dev.in
